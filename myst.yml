@@ -1,7 +1,7 @@
 # $env:BASE_URL = "/starterkit"
 version: 1
 project:
-  title: Principal Component Analysis: A Multimodal Tutorial
+  title: A Multimodal Tutorial for Principal Component Analysis 
   # description:
   keywords: [Principal Component Analysis, PCA, Machine Learning, ML, Education, Multimodal, Modalities, Teaching, Learning, Computer Science, CS]
 
