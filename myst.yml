@@ -1,12 +1,12 @@
 # $env:BASE_URL = "/starterkit"
 version: 1
 project:
-  title: TU Delft's JB Starterkit
+  title: Principal Component Analysis: A Multimodal Tutorial
   # description:
-  keywords: [Jupyter Book, Open Science, TU Delft, Starterkit]
+  keywords: [Principal Component Analysis, PCA, Machine Learning, ML, Education, Multimodal, Modalities, Teaching, Learning, Computer Science, CS]
 
-  github: https://github.com/TUD-JB-OS/starterkit # change this to your own repository
-  date: 2026-01-31
+  github: https://github.com/CristianaVladareanu26/multimodal-PCA-teaching-materials
+  date: 2026-05-04
   thumbnail: style/thumbnail.jpg
   numbering: 
     title: true
