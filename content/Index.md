@@ -1,5 +1,5 @@
 ---
-title: The TUD starterkit for open publishing with JupyterBook
+title: Teaching Principal Component Analysis Through Multiple Modalities - Instructional Materials
 site:
   hide_outline: true
   hide_toc: true
@@ -15,18 +15,35 @@ no-update-date: true
 
 +++ { "kind": "split-image" }
 
-## The TUD starterkit for open publishing with JupyterBook
+## Teaching Principal Component Analysis Through Multiple Modalities - Instructional Materials
 
-a quick setup for your open publishing project.
+This tutorial was created as part of a Bachelor thesis CSE Research Project in the faculty of EEMCS and serves as an open educational resource for first-year Computer Science students. It was designed as an introduction to the concept of PCA and assumes no prior knowledge of machine learning.
 
-{button}`Use this template <https://github.com/new?template_name=starterkit&template_owner=TUD-JB-OS>`  
+{button}`Start <#introduction>`
 
-Originally created by  
+This Jupyter Book template was originally created by  
 *Freek Pols*
 
 ![](figures/cover.png)
 
 +++
 
-This thesis reports on the use of Jupyter Book for open publishing at TU Delft - especially bachelor and master thesis. It provides a quick setup for your open publishing project, including a template and guidelines for using Jupyter Book effectively. The starterkit is designed to help you create and share your research in an open and accessible way.
+## About this material
 
+This project explores the use of Jupyter Book for open educational publishing at TU Delft. It is intended as a structured and accessible introduction to foundational concepts in Machine Learning, specifically designed for students in their first year of Computer Science.
+
+The tutorial emphasizes multimodal instruction and gradually introduces key concepts without assuming prior knowledge of Machine Learning or advanced mathematics.
+
+---
+
+## Contact
+
+For questions, feedback, or suggestions regarding this material, feel free to reach out:
+
+- **Author:** Cristiana Vlădăreanu
+- **Email:** i.vladareanu@student.tudelft.nl  
+- **Responsible Professor:** Gosia Migut
+- **Supervisor:** Ilinca Rențea
+- **Institution:** TU Delft - EEMCS - Computer Science and Engineering
+
+---
