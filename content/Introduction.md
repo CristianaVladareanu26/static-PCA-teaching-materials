@@ -1,6 +1,6 @@
 ---
 abstract: |
-    Principal Component Analysis (PCA) is a widely used dimensionality reduction technique used in machine learning and statistics. It is an unsupervised method that helps reduce the complexity of data by transforming it into a lower-dimensional space, by creating new orthogonal variables (called principal components) that capture the maximum variance in the data. This reduces complexity, making patterns and relationships within the data easier to understand, while preserving the most relevant information.
+    Principal Component Analysis (PCA) is a widely used dimensionality reduction technique used in Machine Learning and Statistics. It is an unsupervised method that helps reduce the complexity of data by transforming it into a lower-dimensional space, making patterns and relationships within the data easier to understand, while preserving the most relevant information.
 ---
 
 # Introduction
@@ -31,7 +31,7 @@ Then the corresponding feature vector is:
 \end{bmatrix}
 ```
 
-Each feature represents one measurable dimension of the data. If a dataset contains:
+Each feature represents one measurable *dimension* of the data. If a dataset contains:
 - 1 feature → the data is one-dimensional
 - 2 features → the data is two-dimensional
 - 3 features → the data is three-dimensional
@@ -56,7 +56,7 @@ In high-dimensional spaces:
 - Many features may be redundant or uninformative;
 - ML models often require exponentially more data to generalize well.
 
-These issues are known as the curse of dimensionality.
+These issues are known as the *curse of dimensionality*.
 
 
 ## Enter: PCA
@@ -69,7 +69,7 @@ Principal Component Analysis (PCA) achieves this by constructing a smaller set o
 :alt: Figure of PCA
 
 Dimensionality reduction with PCA.
-Source: Source: @vutukuri2023
+Source: @vutukuri2023
 ```
 
 Before we can understand how PCA works, we first need to review some essential mathematical concepts from linear algebra and statistics. These foundations are covered in the next chapter.
