@@ -8,14 +8,12 @@ This section revisits the essential concepts from linear algebra required to und
 A vector can be understood in two complementary ways: as an ordered list of numbers or as a geometric object in space.
 
 In ML, a **feature vector** is an ordered list of values, where each entry represents a feature of the object:
-$$
 \begin{bmatrix}
 x_1 \\
 x_2 \\
 \vdots \\
 x_n
 \end{bmatrix}
-$$
 
 Each coordinate  $x_i$ represents the value of the object for one specific feature.
 
@@ -69,6 +67,7 @@ $$
 :class: dropdown
 
 Let:
+
 $$
 \mathbf{a} =
 \begin{bmatrix}
@@ -82,6 +81,7 @@ $$
 1
 \end{bmatrix}
 $$
+
 
 Compute the dot product:
 
@@ -143,23 +143,29 @@ Since the dot product is zero, the vectors are **orthogonal**.
 
 ### Projection
 
-### Projection
-
 Projection describes how much of one vector lies in the direction of another vector. Geometrically, it can be seen as the “shadow” of a vector when it is projected onto another vector.
 
-There are two related forms of projection: **scalar projection** and **vector projection**. The scalar projection is derived from the vector projection and represents only the *length* of the projection. The vector projection, on the other hand, gives the full projected vector, including both direction and magnitude.
+There are two related forms of projection: **scalar projection** and **vector projection**. The scalar projection is derived from the vector projection and represents only the *length* of the projection. The vector projection, on the other hand, gives the *full projected vector*, including both direction and magnitude.
 
 The scalar projection of **a** onto **b** is:
 
 $$
-\text{comp}_{\mathbf{b}}(\mathbf{a}) = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{b}\|}
+s = \|\mathbf{a}\| \cos(\theta) = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{b}\|}
 $$
 
 The vector projection of **a** onto **b** is:
 
 $$
-\text{Proj}_{\mathbf{b}}(\mathbf{a}) = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{b}\|^2} \mathbf{b}
+\text{proj}_{\mathbf{b}}(\mathbf{a}) = \|\mathbf{a}\| \cos(\theta)\,\frac{\mathbf{b}}{\|\mathbf{b}\|} = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{b}\|^2} \mathbf{b}
 $$
+
+```{figure} figures/projection.*
+:label: fig-projection
+:alt: Vector projection
+
+Projection of vector **a** onto vector **b**.
+Source: @projection
+```
 
 
 ## Matrices and Linear Transformations
