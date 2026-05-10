@@ -1,30 +1,80 @@
 ---
 abstract: |
-    very short PCA description
+    Principal Component Analysis (PCA) is a widely used dimensionality reduction technique used in machine learning and statistics. It is an unsupervised method that helps reduce the complexity of data by transforming it into a lower-dimensional space, by creating new orthogonal variables (called principal components) that capture the maximum variance in the data. This reduces complexity, making patterns and relationships within the data easier to understand, while preserving the most relevant information.
 ---
 
 # Introduction
 
-brief into to ML, datasets, features, dimensions
+Machine Learning (ML) is a field of study that focuses on designing algorithms that learn patterns directly from data. Rather than relying on explicitly programmed rules, machine learning systems use data to automatically identify relationships, detect structure, and make predictions or decisions.
 
+At the core of machine learning lies data. 
 
-## The Problem of Dimensionality
-introduce the problem of high dimensionality
+A dataset consists of multiple objects (also called data points or samples). To use an object in a machine learning algorithm, we must represent it numerically. But how do we represent a real-world object so that a mathematical function can process it?
+We do this by measuring relevant properties of the object. These measurements are called features. All features describing an object are combined into a vector, called a feature vector.
 
-```{figure} figures/diagram.*
-:label: fig-diagram
-:alt: Some figure
+```{admonition}  Example: a house object
+:class: dropdown
+:open: true
+:icon: false
+Suppose we want to buy a house. We describe it using a few numbers (features):
+x₁: Size (in square meters) = 120  
+x₂: Number of rooms = 4  
+x₃: Year of construction = 1980  
 
-The myst engine allows Jupyter Notebook, markdown and even tex files to be converted to multiple output formats.
+Then the corresponding feature vector is:
+$$
+\mathbf{x} =
+\begin{bmatrix}
+120 \\
+4 \\
+1980
+\end{bmatrix}
+$$
 ```
+
+Each feature represents one measurable dimension of the data.
+If a dataset contains:
+- 1 feature → the data is one-dimensional
+- 2 features → the data is two-dimensional
+- 3 features → the data is three-dimensional
+- n features → the data is n-dimensional
+
+```{figure} figures/dimensionality.*
+:label: fig-dimensionality
+:alt: A visual representation of one-dimensional, two-dimensional and three-dimensional data.
+
+One-dimensional, two-dimensional and three-dimensional data.
+Source: @gleeson2017
+```
+
+## The Curse of Dimensionality
+As the number of features (dimensions) in a dataset increases, the data becomes harder to work with and understand.
+
+In high-dimensional spaces:
+
+- Data is difficult to visualize;
+- The volume of the space increases so fast that the available data becomes sparse;
+- Many features may be redundant or uninformative;
+- ML models often require exponentially more data to generalize well.
+
+These issues are known as the curse of dimensionality.
+
 
 ## Enter: PCA
-introduce PCA at a high level as a dim reduction technique
+To address the curse of dimensionality, we need a way to reduce the number of features while keeping the most important information in the data.
 
-```{figure} figures/delft.*
-:label: fig-delft
-:alt: picture of the TUD
+Principal Component Analysis (PCA) achieves this by transforming the original features into a smaller set of new, uncorrelated features called principal components. These components capture the most important variation in the data, allowing it to be represented in fewer dimensions without significant loss of information.
 
-A figure that is in the website but not in the PDF version.
+
+```{figure} figures/pca-1.*
+:label: fig-pca-1
+:alt: Figure of PCA
+
+Dimensionality reduction with PCA.
+Source: Source: @vutukuri2023
 ```
+
+Before we can understand how PCA works, we first need to review some essential mathematical concepts from linear algebra and statistics. These foundations are covered in the next chapter.
+
+
 +++
