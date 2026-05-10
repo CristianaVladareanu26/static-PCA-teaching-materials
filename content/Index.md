@@ -19,12 +19,13 @@ no-update-date: true
 
 This tutorial was created as part of a Bachelor thesis CSE Research Project in the faculty of EEMCS and serves as an open educational resource for first-year Computer Science students. It was designed as an introduction to the concept of PCA and assumes no prior knowledge of machine learning.
 
-{button}`Start <#introduction>`
 
-This Jupyter Book template was originally created by  
+
+
+This Jupyter Book template was originally created by:  
 *Freek Pols*
 
-![](figures/cover.png)
+![](figures/tud.jpg)
 
 +++
 
