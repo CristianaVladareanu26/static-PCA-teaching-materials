@@ -4,7 +4,7 @@ project:
     - file: content/Index.md
     # - file: content/Quickstart.md
     - file: content/Introduction.md
-    - title: MathematicalFoundations.md
+    - file: content/MathematicalFoundations.md
       children:
         - file: content/LinearAlgebra.md
         - file: content/Statistics.md
