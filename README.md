@@ -7,7 +7,7 @@ numbering:
 
 ## Additional information
 
-This version of the starterkit has been adapted as part of a Bachelor thesis CSE Research Project in the faculty of EEMCS. It serves as an educational resource for first-year Computer Science students. It was designed as an introduction to the concept of PCA and assumes no prior knowledge of machine learning.
+This version of the starterkit has been adapted as part of a Bachelor thesis CSE Research Project in the faculty of EEMCS. It serves as an educational resource for first-year Computer Science students. It was designed as an introduction to the concept of PCA and assumes no prior knowledge of Machine Learning.
 The goal of this adaptation is to make foundational concepts in Machine Learning more accessible through structured explanations and interactive Jupyter Book content.
 
 ## Starterkit README
