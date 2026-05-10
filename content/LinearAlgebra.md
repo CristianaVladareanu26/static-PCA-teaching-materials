@@ -27,7 +27,7 @@ Algebraic vs. geometric representation of a vector.
 Source: @duda1997
 ```
 
-## Dot product
+### Dot product
 
 The **dot product** is an operation that takes two vectors and returns a single number (a scalar). It measures how much two vectors point in the same direction.
 
@@ -96,7 +96,7 @@ $$
 So, the dot product is **11**.
 ```
 
-## Orthogonality
+### Orthogonality
 
 
 Two vectors are **orthogonal** if their dot product is equal to zero. This means they are perpendicular to each other in geometric space.
