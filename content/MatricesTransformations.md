@@ -11,9 +11,12 @@ A transformation is **linear** if it satisfies two algebraic rules for all vecto
 
 **Geometrically**, a transformation is linear if it keeps grid lines parallel and evenly spaced, and leaves the origin $(0,0)$ fixed in place. It essentially keeps the space "flat" without curving it.
 
-```{figure} [https://youtu.be/kYB8IZa5AuE?start=77&end=134](https://youtu.be/kYB8IZa5AuE?start=77&end=134)
-:target: [https://youtu.be/kYB8IZa5AuE?start=77&end=134](https://youtu.be/kYB8IZa5AuE?start=77&end=134)
-:alt: Linear transformations and matrices | Chapter 3, Essence of linear algebra
-:align: center
-
-*Click to watch: 3Blue1Brown's visual intuition of linear transformations.
+```{raw} html
+<div align="center">
+  <video width="80%" controls>
+    <source src="figures/lineartransform1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <p><em> Visual intuition of linear transformations. Source: <span class="cite" data-caption="true">{cite}`3blue1brown2016`</span></em></p>
+</div>
+```
