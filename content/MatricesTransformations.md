@@ -14,9 +14,11 @@ A transformation is **linear** if it satisfies two algebraic rules for all vecto
 ```{raw} html
 <div align="center">
   <video width="80%" controls>
-    <source src="figures/lineartransform1.mp4" type="video/mp4">
+   <source src="../_static/lineartransform1.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <p><em> Visual intuition of linear transformations. Source: <span class="cite" data-caption="true">{cite}`3blue1brown2016`</span></em></p>
 </div>
 ```
+
+## What is a matrix transformation?
