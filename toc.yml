@@ -9,7 +9,7 @@ project:
         - title: LinearAlgebra
         children:
           - file: content/Vectors.md
-          - file: content/Matrices and Transformations.md
+          - file: content/MatricesTransformations.md
         - file: content/Statistics.md
     - file: content/PCA.md
     - file: content/Applications.ipynb
