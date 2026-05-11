@@ -6,11 +6,14 @@ project:
     - file: content/Introduction.md
     - file: content/MathematicalFoundations.md
       children:
-        - title: LinearAlgebra
+        - title: Linear Algebra
           children:
             - file: content/Vectors.md
             - file: content/MatricesTransformations.md
-        - file: content/Statistics.md
+        - title: Statistics
+          children:
+            - file: content/StatisticalFoundations.md
+            - file: content/CovarianceMatrix.md
     - file: content/PCA.md
     - file: content/Applications.ipynb
     - file: content/Conclusion.md
