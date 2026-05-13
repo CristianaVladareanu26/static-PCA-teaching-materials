@@ -22,11 +22,11 @@ Visual intuition of linear transformations. Source: {cite}`3blue1brown2016`
 
 <div align="center">
   <video width="80%" controls>
-    <source src="figures/lineartransform1.mp4" type="video/mp4">
+    <source src="https://raw.githubusercontent.com/cristianavladareanu26/multimodal-PCA-teaching-materials/main/figures/lineartransform1.mp4" type="video/mp4">
   </video>
+  <br>
+  <em>Visual intuition of linear transformations. Source: <span class="cite" data-caption="true">{cite}`3blue1brown2016`</span></em>
 </div>
-
-*Visual intuition of linear transformations. Source:* {cite}`3blue1brown2016`
 
 
 ## What is a matrix transformation?
