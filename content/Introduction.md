@@ -7,17 +7,15 @@ abstract: |
 
 **Machine Learning (ML)** is a field of study that focuses on designing algorithms that learn patterns directly from data. Rather than relying on explicitly programmed rules, machine learning systems use data to automatically identify relationships, detect structure, and make predictions or decisions.
 
-At the core of machine learning lies **data**. 
-
-(datasets)=
-A dataset consists of multiple objects (also called data points or samples). To use an object in a machine learning algorithm, we must represent it numerically. But how do we represent a real-world object so that a mathematical function can process it?
+At the core of machine learning lies **data**. To use a data object in a Machine Learning algorithm, we must represent it numerically. But how do we represent a real-world object so that a mathematical function can process it?
 
 (features)=
-We do this by measuring relevant properties of the object. These measurements are called *features*. All features describing an object are combined into a vector, called a *feature vector*.
+### Features
+A *feature* is a measurable property or characteristic of an object. Features provide the numerical representation that allows Machine Learning algorithms to process real-world data. All features describing an object are combined into a vector, called a *feature vector*.
 
 ```{admonition}  Example: a house object
 :class: dropdown
-:open: true
+:open: false
 :icon: false
 Suppose we want to buy a house. We describe the house as an object using a few numbers (features):
 
@@ -32,7 +30,32 @@ Then the corresponding feature vector is:
 1980
 \end{bmatrix}
 ```
-(lower-dimensional-space)=
+
+
+(datasets)=
+### Dataset
+A *dataset* is a collection of objects (also called data points or samples), where each object is described by a fixed set of features. Mathematically, a dataset is often represented as a matrix in which rows correspond to objects and columns correspond to features.
+
+```{admonition}  Example: a dataset of houses
+:class: dropdown
+:open: false
+:icon: false
+Consider a dataset of three houses described by three features:
+
+\[
+X =
+\begin{bmatrix}
+120 & 4 & 1980 \\
+85  & 3 & 2005 \\
+150 & 5 & 1995
+\end{bmatrix}
+\]
+
+Each row represents one house, and each column represents a feature (size, number of rooms, year of construction).
+```
+
+
+### Dimensionality
 Each feature represents one measurable *dimension* of the data. If a dataset contains:
 - 1 feature → the data is one-dimensional
 - 2 features → the data is two-dimensional
@@ -49,8 +72,10 @@ Source: @gleeson2017
 ```
 
 (curse-of-dimensionality)=
-## The Curse of Dimensionality
-As the number of features (dimensions) in a dataset increases, the data becomes harder to work with and understand.
+### The Curse of Dimensionality
+The *curse of dimensionality* refers to the collection of problems that arise when working with high-dimensional data, where the number of features is large relative to the number of samples.
+
+
 
 In high-dimensional spaces:
 
