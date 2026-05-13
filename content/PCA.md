@@ -5,7 +5,7 @@ Here is a step-by-step tutorial of the process. Feel free to return to the prere
 
 ## Overview
 Before we dive in, let's revise the goal of PCA.
-Many problems in Machine Learning involve huge {ref}`datasets` - objects with thousands of {ref}`features`. These datasets are very hard to understand, analyze, and visualize (see the {ref}`Curse of Dimensionality`). With PCA, we want to take a dataset with tons of features and reduce it to a {ref}`lower-dimensional space`, while keeping the most relevant information. We do this by finding the axes that account for the largest {ref}`variance` in the dataset.
+Many problems in Machine Learning involve huge {ref}`datasets <datasets>` - objects with thousands of {ref}`features <features>`. These datasets are very hard to understand, analyze, and visualize (see the {ref}`Curse of Dimensionality <curse-of-dimensionality>`). With PCA, we want to take a dataset with tons of features and reduce it to a {ref}`lower-dimensional space <lower-dimensional-space>`, while keeping the most relevant information. We do this by finding the axes that account for the largest {ref}`variance <variance>` in the dataset.
 
 
 ```{tip} Why does keeping the largest variance mean keeping the most relevant information?
@@ -20,11 +20,11 @@ In other words, these two features are highly correlated. It is possible to redu
 
 
 ## Step 1: Centering the Data
-PCA finds the directions of maximum variance in the dataset. Because variance is inherently a measure of how data spreads out from its average, we first need to shift our dataset so that its average sits exactly at the origin (zero).
+PCA finds the directions of maximum {ref}`variance <variance>` in the dataset. Because variance is inherently a measure of how data spreads out from its average, we first need to shift our dataset so that its average sits exactly at the origin (zero).
 
 This process is called **mean centering**. If we skip this step, the first principal component might simply point from the origin to the center of the data cloud, capturing the physical location of the data rather than its actual internal shape or spread.
 
-To center the data, we calculate the {ref}`mean` of each feature across all data points, and subtract that mean from every value in that feature.
+To center the data, we calculate the {ref}`mean <mean>` of each feature across all data points, and subtract that mean from every value in that feature.
 
 $$ \mathbf{X}_{\text{centered}} = \mathbf{X} - \mu $$
 
@@ -34,7 +34,7 @@ Use the applet below to generate a random dataset, then center it.
 Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. one button is available 'step 1: center data' that centers the dataset.
 
 ## Step 2: Calculating the Covariance Matrix
-Next, we calculate the {ref}`covariance` matrix to capture how each pair of features in the data varies together. This allows us to see how features relate to each other - whether they increase or decrease together.
+Next, we calculate the {ref}`covariance <covariance>` matrix to capture how each pair of features in the data varies together. This allows us to see how features relate to each other - whether they increase or decrease together.
 
 The covariance matrix $\Sigma$ for a mean-centered data matrix $\mathbf{X}$ with $n$ samples is calculated as:
 $$ \mathbf{C} = \frac{1}{n-1} \mathbf{X}_{\text{centered}}^T \mathbf{X}_{\text{centered}} $$
@@ -42,7 +42,7 @@ $$ \mathbf{C} = \frac{1}{n-1} \mathbf{X}_{\text{centered}}^T \mathbf{X}_{\text{c
 Insert some sort of visualization that explains the point of the covariance matrix
 
 ## Step 3: Eigenvalue Decomposition
-Given the covariance matrix $\mathbf{C}$ (which is a square, symmetric matrix), eigenvalue decomposition is the process of finding a set of scalars ({ref}`eigenvalues`) and vectors ({ref}`eigenvectors`) such that:
+Given the covariance matrix $\mathbf{C}$ (which is a square, symmetric matrix), eigenvalue decomposition is the process of finding a set of scalars ({ref}`eigenvalues <eigenvalues>`) and vectors ({ref}`eigenvectors <eigenvectors>`) such that:
 $$ \mathbf{C} \mathbf{v} = \lambda \mathbf{v} $$
 
 Here, $\mathbf{v}$ represents an eigenvector and $\lambda$ represents its corresponding eigenvalue. We apply this procedure to find the eigenvalues and eigenvectors of our covariance matrix.
@@ -88,7 +88,7 @@ $$ \mathbf{X}_{\text{pca}} = \mathbf{X}_{\text{centered}} \mathbf{W} $$
 
 *(Where $\mathbf{X}_{\text{centered}}$ is the centered data and $\mathbf{W}$ is the projection matrix containing the top $k$ eigenvectors as columns).*
 
-Geometrically, this matrix multiplication is equivalent to calculating the ({ref}`dot product`) between the original data vectors and the principal component vectors. This mathematical operation effectively ({ref}`projects`) the original data points onto the newly established orthogonal axes.
+Geometrically, this matrix multiplication is equivalent to calculating the {ref}`dot product <dot-product>` between the original data vectors and the principal component vectors. This mathematical operation effectively {ref}`projects <projection>` the original data points onto the newly established orthogonal axes.
 
 Use the applet below to project the original 3D dataset onto its 2D equivalent. 
 Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. button one is available '1. center data' that centers the dataset.  button 2 is available '2. find eigenvectors' that draws the eigenvectors of the dataset. button 3 is available '3. find PCs' that selects 1/2 PCs with the most variance. button 4 is available '4. project data' that projects the datapoints onto the given principal components
