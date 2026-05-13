@@ -12,10 +12,12 @@ A transformation is **linear** if it satisfies two algebraic rules for all vecto
 **Geometrically**, a transformation is linear if it keeps grid lines parallel and evenly spaced, and leaves the origin $(0,0)$ fixed in place. It essentially keeps the space "flat" without curving it.
 
 
-```{video} figures/lineartransform1.mp4
+```{figure} figures/lineartransform1.mp4
 :alt: Visual intuition of linear transformations
 :width: 80%
 :align: center
+
+Visual intuition of linear transformations. Source: {cite}`3blue1brown2016`
 ```
 
 
