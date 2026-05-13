@@ -9,8 +9,10 @@ abstract: |
 
 At the core of machine learning lies **data**. 
 
+(datasets)=
 A dataset consists of multiple objects (also called data points or samples). To use an object in a machine learning algorithm, we must represent it numerically. But how do we represent a real-world object so that a mathematical function can process it?
 
+(features)=
 We do this by measuring relevant properties of the object. These measurements are called *features*. All features describing an object are combined into a vector, called a *feature vector*.
 
 ```{admonition}  Example: a house object
@@ -30,7 +32,7 @@ Then the corresponding feature vector is:
 1980
 \end{bmatrix}
 ```
-
+(lower-dimensional-space)=
 Each feature represents one measurable *dimension* of the data. If a dataset contains:
 - 1 feature → the data is one-dimensional
 - 2 features → the data is two-dimensional
@@ -46,6 +48,7 @@ One-dimensional, two-dimensional and three-dimensional data.
 Source: @gleeson2017
 ```
 
+(curse-of-dimensionality)=
 ## The Curse of Dimensionality
 As the number of features (dimensions) in a dataset increases, the data becomes harder to work with and understand.
 
