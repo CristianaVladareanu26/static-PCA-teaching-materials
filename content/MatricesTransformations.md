@@ -12,16 +12,18 @@ A transformation is **linear** if it satisfies two algebraic rules for all vecto
 **Geometrically**, a transformation is linear if it keeps grid lines parallel and evenly spaced, and leaves the origin $(0,0)$ fixed in place. It essentially keeps the space "flat" without curving it.
 
 ---
-Watch the video below to understand the intuition behind linear transformations. Source: {cite}`3blue1brown2016
+Watch the video below to understand the intuition behind linear transformations. 
+Source: @3blue1brown2016
 
 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
     <iframe
         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-        src="https://www.youtube.com/embed/kYB8IZa5AuE?si=05H1OiuydGVIlaiy&start=77&end=134&cc_load_policy=1&cc_lang_pref=en"
+        src="https://www.youtube.com/embed/kYB8IZa5AuE?si=05H1OiuydGVIlaiy&start=77&end=134&cc_load_policy=1"
         frameborder="0"
         allowfullscreen
     ></iframe>
 </div>
+
 ---
 
 ## What is a matrix transformation?
@@ -48,17 +50,18 @@ In a standard 2D Cartesian coordinate system, every vector can be described as a
 ```
 
 ---
-Watch the video below to see how matrix columns determine where the basis vectors go, and how all other vectors follow from linear combinations of those basis vectors. Source: {cite}`3blue1brown2016
+Watch the video below to see how matrix columns determine where the basis vectors go, and how all other vectors follow from linear combinations of those basis vectors. 
+Source: @3blue1brown2016
 
 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
     <iframe
         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-        src="https://www.youtube.com/embed/kYB8IZa5AuE?si=05H1OiuydGVIlaiy&start=204&end=337&cc_load_policy=1&cc_lang_pref=en"
+        src="https://www.youtube.com/embed/kYB8IZa5AuE?si=05H1OiuydGVIlaiy&start=204&end=337&cc_load_policy=1"
         frameborder="0"
         allowfullscreen
     ></iframe>
 </div>
+
 ---
 
-## Common Matrix Transformations
 
