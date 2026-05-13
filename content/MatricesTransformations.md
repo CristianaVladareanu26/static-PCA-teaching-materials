@@ -64,4 +64,37 @@ Source: @3blue1brown2016
 
 ---
 
+## Eigenvectors and Eigenvalues
+
+(eigenvectors)=
+An *eigenvector* of a matrix is a non-zero vector whose direction does not change when the matrix is applied to it. It only gets scaled.
+
+(eigenvalues)=
+An *eigenvalue* is a scalar that describes how much an eigenvector is stretched or compressed during a linear transformation.
+
+
+In the equation:
+
+$$
+\mathbf{A}\mathbf{v} = \lambda \mathbf{v}
+$$
+
+- $\mathbf{v}$ is the eigenvector  
+- $\lambda$ is the eigenvalue  
+
+
+---
+Watch the video below to get a visual understanding of eigenvectors and eigenvalues. 
+Source: @3blue1brown2016-3
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        src="https://www.youtube.com/embed/PFDu9oVAE-g?si=SG3Ik5E2fdrDUyqq&start=80&end=243&cc_load_policy=1"
+        frameborder="0"
+        allowfullscreen
+    ></iframe>
+</div>
+---
+
 
