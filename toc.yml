@@ -10,12 +10,12 @@ project:
           children:
             - file: content/Vectors.md
             - file: content/MatricesTransformations.md
-        - title: Statistics
+        - title: Statistical Foundations
           children:
-            - file: content/StatisticalFoundations.md
+            - file: content/Statistics.md
             - file: content/CovarianceMatrix.md
     - file: content/PCA.md
-    - file: content/Applications.ipynb
+    - file: content/Applications.md
     - file: content/Conclusion.md
    # - title: Appendix
     #  children:
