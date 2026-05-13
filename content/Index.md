@@ -17,7 +17,7 @@ no-update-date: true
 
 ## Teaching Principal Component Analysis Through Multiple Modalities - Instructional Materials
 
-This tutorial was created as part of a Bachelor thesis CSE Research Project in the faculty of EEMCS and serves as an open educational resource for first-year Computer Science students. It was designed as an introduction to the concept of PCA and assumes no prior knowledge of machine learning.
+This tutorial was created as part of a Bachelor thesis conducted during the CSE3000 Research Project course in the faculty of EEMCS. It serves as an open educational resource for first-year Computer Science students. It was designed as an introduction to the concept of Principal Component Analysis and assumes no prior knowledge of Machine Learning.
 
 
 
