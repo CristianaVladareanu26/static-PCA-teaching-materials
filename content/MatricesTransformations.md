@@ -17,7 +17,7 @@ Watch the video below to understand the intuition behind linear transformations.
 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
     <iframe
         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-        src="https://www.youtube.com/embed/kYB8IZa5AuE?si=05H1OiuydGVIlaiy&start=77&end=134"
+        src="https://www.youtube.com/embed/kYB8IZa5AuE?si=05H1OiuydGVIlaiy&start=77&end=134&cc_load_policy=1&cc_lang_pref=en"
         frameborder="0"
         allowfullscreen
     ></iframe>
@@ -53,7 +53,7 @@ Watch the video below to see how matrix columns determine where the basis vector
 <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
     <iframe
         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-        src="https://www.youtube.com/embed/kYB8IZa5AuE?si=05H1OiuydGVIlaiy&start=204&end=337"
+        src="https://www.youtube.com/embed/kYB8IZa5AuE?si=05H1OiuydGVIlaiy&start=204&end=337&cc_load_policy=1&cc_lang_pref=en"
         frameborder="0"
         allowfullscreen
     ></iframe>
