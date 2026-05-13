@@ -88,7 +88,23 @@ $$ \mathbf{X}_{\text{pca}} = \mathbf{X}_{\text{centered}} \mathbf{W} $$
 
 *(Where $\mathbf{X}_{\text{centered}}$ is the centered data and $\mathbf{W}$ is the projection matrix containing the top $k$ eigenvectors as columns).*
 
-Geometrically, this matrix multiplication is equivalent to calculating the {ref}`dot product <dot-product>` between the original data vectors and the Principal Component vectors. This mathematical operation effectively {ref}`projects <projection>` the original data points onto the newly established orthogonal axes.
+Each column of $\mathbf{W}$ is a Principal Component, and each Principal Component is a **unit vector** defining a new axis.
+
+Geometrically, this matrix multiplication effectively projects the original data points onto the newly established orthogonal axes.
+
+```{hint} What does this mean?
+:class: dropdown
+:open: false
+:icon: true
+Each operation in the matrix multiplication corresponds to taking a dot product with a unit vector (the Principal Component). This ({ref}`dot product with a unit vector <dot-prod-unit>`) measures how much of the original data vector lies in the direction of that Principal Component.
+
+Because the Principal Components are unit vectors, this dot product gives the scalar projection of the data onto that axis.
+
+A scalar projection only tells us how far the vector extends along that direction, not the full geometric vector. To represent this as a vector in space, we use the definition of {ref}`projection-unit`, which constructs the projected vector by combining its length with the direction of the axis.
+
+In other words, each entry of $\mathbf{X}_{\text{centered}} \mathbf{W}$ is obtained by projecting the original data onto one of the new orthogonal axes.
+```
+
 
 Use the applet below to project the original 3D dataset onto its 2D equivalent. 
 Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. button one is available '1. center data' that centers the dataset.  button 2 is available '2. find eigenvectors' that draws the eigenvectors of the dataset. button 3 is available '3. find PCs' that selects 1/2 PCs with the most variance. button 4 is available '4. project data' that projects the datapoints onto the given principal components
