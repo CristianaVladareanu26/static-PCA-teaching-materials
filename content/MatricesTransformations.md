@@ -20,5 +20,13 @@ A transformation is **linear** if it satisfies two algebraic rules for all vecto
 Visual intuition of linear transformations. Source: {cite}`3blue1brown2016`
 ```
 
+<div align="center">
+  <video width="80%" controls>
+    <source src="figures/lineartransform1.mp4" type="video/mp4">
+  </video>
+</div>
+
+*Visual intuition of linear transformations. Source:* {cite}`3blue1brown2016`
+
 
 ## What is a matrix transformation?
