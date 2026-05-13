@@ -1,3 +1,89 @@
 # PCA Step-by-Step 
 
-PCA tutorial
+Finally, we reach the key point in our lesson that everything has been building up to: the PCA algorithm!
+Here is a step-by-step tutorial of the process. Feel free to return to the prerequisite maths section if you are confused by any step.
+
+## Overview
+Before we dive in, let's revise the goal of PCA.
+Many problems in Machine Learning involve huge datasets - objects with thousands of {ref}`features`. These datasets are very hard to understand, analyze, and visualize (see the {ref}`Curse of Dimensionality`). With PCA, we want to take a dataset with tons of features and reduce it to a {ref}`lower-dimensional space`, while keeping the most relevant information. We do this by finding the axes that account for the largest {ref}`variance` in the dataset.
+
+
+```{tip} Why does keeping the largest variance mean keeping the most relevant information?
+:class: dropdown
+:open: false
+:icon: true
+
+Imagine you are analyzing a dataset of houses. The data has many features, including "square fmeters" and "number of bedrooms." Naturally, houses with high square footage also tend to have a higher number of bedrooms. 
+
+In other words, these two features are highly correlated. It is possible to reduce the dimensions of that dataset by removing these redundancies, combining them into a single feature that captures the overall "size" of the house without losing the core information.
+```
+
+
+## Step 1: Centering the Data
+PCA is highly sensitive to the scale of the data. Centering ensures that each feature has the same level of contribution, preventing one variable from dominating others. For each variable, normalization is done by subtracting its {ref}`mean` and dividing by its {ref}`standard deviation`.
+
+$$ \mathbf{X}_{\text{standardized}} = \frac{\mathbf{X} - \mu}{\sigma} $$
+
+Use the applet below to generate a random dataset, then center it.
+Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. one button is available 'step 1: center data' that centers the dataset.
+
+## Step 2: Calculating the Covariance Matrix
+Next, we calculate the {ref}`covariance` matrix to capture how each pair of features in the data varies together. This allows us to see how features relate to each other - whether they increase or decrease together.
+
+The covariance matrix $\Sigma$ for a mean-centered data matrix $\mathbf{X}$ with $n$ samples is calculated as:
+$$ \Sigma = \frac{1}{n-1} \mathbf{X}^T \mathbf{X} $$
+
+Insert some sort of visualization that explains the point of the covariance matrix
+
+## Step 3: Eigenvalue Decomposition
+Given the covariance matrix $\Sigma$ (which is a square, symmetric matrix), eigenvalue decomposition is the process of finding a set of scalars ({ref}`eigenvalues`) and vectors ({ref}`eigenvectors`) such that:
+$$ \Sigma \mathbf{v} = \lambda \mathbf{v} $$
+
+Here, $\mathbf{v}$ represents an eigenvector and $\lambda$ represents its corresponding eigenvalue. We apply this procedure to find the eigenvalues and eigenvectors of our covariance matrix.
+
+```{tip} Eigenvectors and Eigenvalues
+:class: dropdown
+:open: true
+:icon: true
+Eigenvectors indicate the directions of maximum variance in the data (the Principal Components), while eigenvalues quantify the magnitude of the variance captured by each of those Principal Components.
+```
+
+Use the applet below to find the eigenvectors of the dataset.
+Observe how the first eigenvector points to the direction with the most variance in the data, and the second eigenvector points to the direction with the second most variance.
+
+Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. button one is available '1. center data' that centers the dataset.  button 2 is available '2. find eigenvectors' that draws the eigenvectors of the dataset.
+
+
+## Step 4: Finding Principal Components
+
+Because the eigenvalues measure the data's variance in the direction of its corresponding eigenvector, we can rank them. We sort the eigenvalues in descending order and keep only the top $k$ required Principal Components.
+
+So, the eigenvector with the highest eigenvalue corresponds to the first Principal Component (PC1). The second Principal Component (PC2) is the eigenvector with the second highest eigenvalue, and so on.
+
+```{tip} What is a Principal Component?
+:class: dropdown
+:open: true
+:icon: true
+A Principal Component is a new axis created from a linear combination of the original features. It is chosen to maximize the variance of the data projected onto it. 
+```
+
+Use the applet below to highlight the first Principal Component.
+Observe how this Principal Component describes the direction where the data is most spread out, i.e. has the maximum variance. 
+
+Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. button one is available '1. center data' that centers the dataset.  button 2 is available '2. find eigenvectors' that draws the eigenvectors of the dataset. button 3 is available '3. find PCs' that selects 1/2 PCs with the most variance.
+
+## Step 5: Project the Data
+Finally, we project the original data onto the dimensions represented by the selected Principal Components. This means we effectively reduce the number of features (dimensions) while keeping the most important patterns in the data!
+
+To do this, we multiply the centered dataset by the matrix of eigenvectors found during the decomposition of the covariance matrix.
+$$ \mathbf{X}_{\text{pca}} = \mathbf{X} \mathbf{W} $$
+
+*(Where $\mathbf{X}$ is the centered data and $\mathbf{W}$ is the matrix containing the top $k$ eigenvectors as columns).*
+
+Geometrically, this matrix multiplication is equivalent to calculating the ({ref}`dot product`) between the original data vectors and the principal component vectors. This mathematical operation effectively ({ref}`projects`) the original data points onto the newly established orthogonal axes.
+
+Use the applet below to project the original 3D dataset onto its 2D equivalent. 
+Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. button one is available '1. center data' that centers the dataset.  button 2 is available '2. find eigenvectors' that draws the eigenvectors of the dataset. button 3 is available '3. find PCs' that selects 1/2 PCs with the most variance. button 4 is available '4. project data' that projects the datapoints onto the given principal components
+
+
+Ready to see PCA in action? Go to the next section to see a worked-out example.
