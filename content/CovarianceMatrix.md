@@ -9,22 +9,11 @@ For a dataset with $d$ features, the covariance matrix is a $d \times d$ matrix 
 
 ## Definition
 
-For features $x^{(i)}$ and $x^{(j)}$, the entry in the covariance matrix is:
+For features $x_i$ and $x_j$, the entry in the covariance matrix is:
 
 $$
-\mathbf{C}_{ij} = \mathrm{cov}(x^{(i)}, x^{(j)})
+\mathbf{C}_{ij} = \mathrm{cov}(x_i, x_j)
 $$
-
-where:
-
-- diagonal entries ($i = j$) represent the variance of a single feature  
-- off-diagonal entries ($i \neq j$) represent how two different features vary together  
-
----
-
-## Matrix
-
-For a dataset with features $x_1, x_2, \dots, x_d$, the covariance matrix looks like:
 
 $$
 \mathbf{C} =
@@ -35,6 +24,11 @@ $$
 \mathrm{cov}(x_d, x_1) & \mathrm{cov}(x_d, x_2) & \cdots & \mathrm{var}(x_d)
 \end{bmatrix}
 $$
+
+where:
+
+- diagonal entries ($i = j$) represent the variance of a single feature  
+- off-diagonal entries ($i \neq j$) represent how two different features vary together  
 
 ---
 
