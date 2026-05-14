@@ -9,7 +9,7 @@ project:
         - title: Linear Algebra
           children:
             - file: content/Vectors.ipynb
-            - file: content/MatricesTransformations.md
+            - file: content/Matrices.ipynb
         - title: Statistical Foundations
           children:
             - file: content/Statistics.md
