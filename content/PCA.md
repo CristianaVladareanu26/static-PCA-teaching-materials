@@ -97,13 +97,6 @@ Geometrically, this matrix multiplication effectively projects the original data
 Use the applet below to project the original 3D dataset onto its 2D equivalent. 
 Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. button one is available '1. center data' that centers the dataset.  button 2 is available '2. find eigenvectors' that draws the eigenvectors of the dataset. button 3 is available '3. find PCs' that selects 1/2 PCs with the most variance. button 4 is available '4. project data' that projects the datapoints onto the given principal components
 
-```{anywidget} ./assets/pca-widget.mjs
-:css: ./assets/pca-widget-style.css
-{
-  "step": 0
-}
-```
-
 
 ```{anywidget} assets/pca-widget.mjs
 :css: assets/pca-widget-style.css
