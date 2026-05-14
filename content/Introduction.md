@@ -42,18 +42,14 @@ A *dataset* is a collection of objects (also called data points or samples), whe
 :icon: false
 Consider a dataset of three houses described by three features:
 
-\[
-X =
-\begin{bmatrix}
-120 & 4 & 1980 \\
-85  & 3 & 2005 \\
-150 & 5 & 1995
-\end{bmatrix}
-\]
+| Object  | Size (sq meters) | Number of rooms | Year of construction |
+| :------ | :--------------- | :-------------- | :------------------- |
+| House 1 | 120              | 4               | 1980                 |
+| House 2 | 85               | 3               | 2005                 |
+| House 3 | 150              | 5               | 1995                 |
 
-Each row represents one house, and each column represents a feature (size, number of rooms, year of construction).
+Each row represents one house (a specific object or data point), and each column represents a specific feature.
 ```
-
 
 ### Dimensionality
 Each feature represents one measurable *dimension* of the data. If a dataset contains:
@@ -84,7 +80,6 @@ In high-dimensional spaces:
 - Many features may be redundant or uninformative;
 - ML models often require exponentially more data to generalize well.
 
-These issues are known as the *curse of dimensionality*.
 
 
 ## Enter: PCA
