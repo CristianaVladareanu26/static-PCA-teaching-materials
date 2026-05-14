@@ -36,7 +36,7 @@ Insert interactive visualization: a random 3D dataset with a 'generate random da
 ## Step 2: Calculating the Covariance Matrix
 Next, we calculate the {ref}`covariance <covariance>` matrix to capture how each pair of features in the data varies together. This allows us to see how features relate to each other - whether they increase or decrease together.
 
-The covariance matrix $\Sigma$ for a mean-centered data matrix $\mathbf{X}$ with $n$ samples is calculated as:
+The {ref}`covariance matrix <covariance-matrix>` $\Sigma$ for a mean-centered data matrix $\mathbf{X}$ with $n$ samples is calculated as:
 $$ \mathbf{C} = \frac{1}{n-1} \mathbf{X}_{\text{centered}}^T \mathbf{X}_{\text{centered}} $$
 
 Insert some sort of visualization that explains the point of the covariance matrix
@@ -92,18 +92,6 @@ Each column of $\mathbf{W}$ is a Principal Component, and each Principal Compone
 
 Geometrically, this matrix multiplication effectively projects the original data points onto the newly established orthogonal axes.
 
-```{hint} What does this mean?
-:class: dropdown
-:open: false
-:icon: true
-Each operation in the matrix multiplication corresponds to taking a dot product with a unit vector (the Principal Component). This ({ref}`dot product with a unit vector <dot-prod-unit>`) measures how much of the original data vector lies in the direction of that Principal Component.
-
-Because the Principal Components are unit vectors, this dot product gives the scalar projection of the data onto that axis.
-
-A scalar projection only tells us how far the vector extends along that direction, not the full geometric vector. To represent this as a vector in space, we use the definition of {ref}`projection-unit`, which constructs the projected vector by combining its length with the direction of the axis.
-
-In other words, each entry of $\mathbf{X}_{\text{centered}} \mathbf{W}$ is obtained by projecting the original data onto one of the new orthogonal axes.
-```
 
 
 Use the applet below to project the original 3D dataset onto its 2D equivalent. 
