@@ -99,7 +99,7 @@ Insert interactive visualization: a random 3D dataset with a 'generate random da
 
 
 ```{applet}
-:url: ../assets/pca_applet.html
+:url: /assets/pca_applet.html
 
 An interactive exploration of the 5 steps of PCA.
 ```
