@@ -3,6 +3,149 @@
   width: 100%;
   height: 600px;
   border: 1px solid #e1e4e8;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f7f9fb 0%, #eef2f6 100%);
+}
+
+/* =========================
+   CONTROL PANEL
+   ========================= */
+.pca-controls {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+
+  padding: 14px;
+  border-radius: 10px;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+
+  z-index: 20;
+  width: 230px;
+}
+
+.pca-controls div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 13px;
+  color: #333;
+}
+
+/* input field */
+.pca-controls input {
+  width: 70px;
+  padding: 5px 6px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  outline: none;
+  font-size: 13px;
+}
+
+/* =========================
+   BUTTONS (step-based UI)
+   ========================= */
+.pca-controls button {
+  padding: 9px 10px;
+  cursor: pointer;
+
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+
+  font-weight: 600;
+  font-size: 13px;
+  color: #24292f;
+
+  transition: all 0.15s ease-in-out;
+}
+
+.pca-controls button:hover:not([disabled]) {
+  background: #f3f4f6;
+  border-color: #b6c2cf;
+  transform: translateY(-1px);
+}
+
+.pca-controls button:active:not([disabled]) {
+  transform: translateY(0px);
+}
+
+.pca-controls button[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* =========================
+   DUAL VIEW LAYOUT
+   ========================= */
+.views-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* each half */
+.scene-container {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* visual divider between views */
+.scene-container:first-child {
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   CANVAS FIXES (IMPORTANT)
+   prevents stretching / blurry rendering
+   ========================= */
+.scene-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* =========================
+   OPTIONAL UX IMPROVEMENT
+   subtle labels for views (helpful for PCA learning)
+   ========================= */
+.scene-container::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 11px;
+  color: rgba(0,0,0,0.45);
+  font-family: system-ui, sans-serif;
+  pointer-events: none;
+}
+
+/* left view label */
+.scene-container:first-child::before {
+  content: "Original Data";
+}
+
+/* right view label */
+.scene-container:last-child::before {
+  content: "PCA Transform";
+}
+
+/* 
+.pca-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  border: 1px solid #e1e4e8;
   border-radius: 8px;
   overflow: hidden;
   background-color: #f4f6f8;
@@ -75,4 +218,4 @@
 
 .scene-container:first-child {
   border-right: 2px solid #ccc;
-}
+} */
