@@ -60,6 +60,9 @@ export default {
     const rendererA = new THREE.WebGLRenderer({ antialias: true });
     const rendererB = new THREE.WebGLRenderer({ antialias: true });
 
+    rendererA.setClearColor(0xf4f6f8, 1);
+    rendererB.setClearColor(0xf4f6f8, 1);
+
     viewA.appendChild(rendererA.domElement);
     viewB.appendChild(rendererB.domElement);
 
@@ -146,31 +149,49 @@ export default {
     // =========================
     function generate() {
       const n = parseInt(inputPoints.value) || 150;
-
+    
       state.raw = [];
-
+    
+      // random center in a quadrant-like space
+      const globalCenter = new THREE.Vector3(
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 6,
+        (Math.random() - 0.5) * 8
+      );
+    
+      // random anisotropic spread direction
+      const spread = new THREE.Vector3(
+        1 + Math.random() * 3,
+        0.5 + Math.random() * 2,
+        0.2 + Math.random() * 1.5
+      );
+    
       for (let i = 0; i < n; i++) {
-        state.raw.push(new THREE.Vector3(
-          randn() * 2,
-          randn() * 1.2,
-          randn() * 0.6
-        ));
+        const p = new THREE.Vector3(
+          randn() * spread.x,
+          randn() * spread.y,
+          randn() * spread.z
+        );
+    
+        p.add(globalCenter); // IMPORTANT: shift dataset
+    
+        state.raw.push(p);
       }
-
+    
       state.centered = [];
       state.eigenvectors = [];
-
+    
       arrows.forEach(a => sceneB.remove(a));
       arrows.length = 0;
-
+    
+      drawPoints(pointGroupA, state.raw, matA);
+      drawPoints(pointGroupB, state.raw, matB);
+    
       btnCenter.disabled = false;
       btnEigen.disabled = true;
       btnPCs.disabled = true;
       btnProj.disabled = true;
-
-      drawPoints(pointGroupA, state.raw, matA);
-      drawPoints(pointGroupB, state.raw, matB);
-
+    
       renderAll();
     }
 
@@ -251,12 +272,20 @@ export default {
     }
 
     function drawEigen() {
-      const origin = state.mean;
-
-      const colors = [0xff5555, 0x55ff55, 0x5555ff];
-
+      const origin = state.mean || new THREE.Vector3(0,0,0);
+    
+      const colors = [0xff3b30, 0x34c759, 0x007aff];
+    
       state.eigenvectors.forEach((v, i) => {
-        const arrow = new THREE.ArrowHelper(v, origin, 3, colors[i]);
+    
+        const arrow = new THREE.ArrowHelper(v, origin, 4, colors[i], 0.6, 0.4);
+    
+        // MAKE IT VISIBLE
+        arrow.cone.material.depthTest = false;
+        arrow.line.material.depthTest = false;
+    
+        arrow.renderOrder = 999;
+    
         sceneB.add(arrow);
         arrows.push(arrow);
       });
@@ -266,7 +295,15 @@ export default {
     // STEP 3: PC HIGHLIGHT
     // =========================
     function highlight() {
-      if (arrows[2]) arrows[2].setColor(new THREE.Color(0xaaaaaa));
+      arrows.forEach((a, i) => {
+        if (i === 0) {
+          a.setColor(new THREE.Color(0xff0000));
+        }
+        if (i === 1) {
+          a.setColor(new THREE.Color(0x00ff00));
+        }
+      });
+    
       btnProj.disabled = false;
     }
 
