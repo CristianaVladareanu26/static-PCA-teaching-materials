@@ -1,4 +1,4 @@
-# Statistics
+# Statistical Foundations
 
 (mean)=
 ## Mean
