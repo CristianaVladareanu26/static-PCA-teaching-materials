@@ -98,4 +98,11 @@ Use the applet below to project the original 3D dataset onto its 2D equivalent.
 Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. button one is available '1. center data' that centers the dataset.  button 2 is available '2. find eigenvectors' that draws the eigenvectors of the dataset. button 3 is available '3. find PCs' that selects 1/2 PCs with the most variance. button 4 is available '4. project data' that projects the datapoints onto the given principal components
 
 
+```{applet}
+:url: [https://yourusername.github.io/pca-project/pca_applet.html](https://yourusername.github.io/pca-project/pca_applet.html)
+:fig: images/pca_thumbnail.png
+
+An interactive exploration of the 5 steps of PCA.
+```
+
 Ready to see PCA in action? Go to the next section to see a worked-out example.
