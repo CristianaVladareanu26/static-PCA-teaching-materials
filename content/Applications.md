@@ -70,11 +70,6 @@ $$
 \end{bmatrix}
 $$
 
-Calculating the elements of the resulting $2 \times 2$ matrix:
-* **Top-Left:** $(0.5)^2 + (-1.5)^2 + (1.5)^2 + (-0.5)^2 = 0.25 + 2.25 + 2.25 + 0.25 = 5$
-* **Bottom-Right:** $(-1.5)^2 + (0.5)^2 + (-0.5)^2 + (1.5)^2 = 2.25 + 0.25 + 0.25 + 2.25 = 5$
-* **Off-Diagonals:** $(0.5)(-1.5) + (-1.5)(0.5) + (1.5)(-0.5) + (-0.5)(1.5) = -0.75 - 0.75 - 0.75 - 0.75 = -3$
-
 Divide the resulting matrix by $n-1 = 3$:
 
 $$
@@ -97,13 +92,14 @@ $$
 
 
 ## Step 3: Eigenvalue Decomposition
-We solve for the eigenvalues $\lambda$ using the characteristic equation $\det(\mathbf{C} - \lambda\mathbf{I}) = 0$:
+
+We solve for the eigenvalues $\lambda$ using **the characteristic equation $\det(\mathbf{C} - \lambda \mathbf{I}) = 0$:**
 
 $$
 \det \left(
 \begin{bmatrix}
-5/3 - \lambda & -1 \\
--1 & 5/3 - \lambda
+\frac{5}{3} - \lambda & -1 \\
+-1 & \frac{5}{3} - \lambda
 \end{bmatrix}
 \right) = 0
 $$
@@ -113,33 +109,68 @@ $$
 $$
 
 $$
-\left(\frac{5}{3} - \lambda\right)^2 = 1 \implies \frac{5}{3} - \lambda = \pm 1
+\left(\frac{5}{3} - \lambda\right)^2 = 1
+\quad \Rightarrow \quad
+\frac{5}{3} - \lambda = \pm 1
 $$
 
 This gives us our two eigenvalues:
+
 $$
-\lambda_1 = \frac{5}{3} + 1 = \frac{8}{3} \approx 2.67, \quad \lambda_2 = \frac{5}{3} - 1 = \frac{2}{3} \approx 0.67
+\lambda_1 = \frac{8}{3} \approx 2.67,
+\quad
+\lambda_2 = \frac{2}{3} \approx 0.67
 $$
 
-Next, we find the eigenvectors by solving $(\mathbf{C} - \lambda\mathbf{I})\mathbf{v} = 0$. 
-For $\lambda_1 = 8/3$:
+Next, we find the eigenvectors by solving
+
+$$
+(\mathbf{C} - \lambda \mathbf{I}) \mathbf{v} = 0.
+$$
+
+For $\lambda_1 = \frac{8}{3}$:
+
 $$
 \begin{bmatrix}
 -1 & -1 \\
 -1 & -1
 \end{bmatrix}
-\begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix} \implies -x - y = 0 \implies x = -y
-$$
-Normalizing this vector to have a length of 1 gives us our first eigenvector:
-$$
-\mathbf{v}_1 = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ -1 \end{bmatrix}
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+0
+\end{bmatrix}
+\quad \Rightarrow \quad
+-x - y = 0
+\quad \Rightarrow \quad
+x = -y
 $$
 
-For $\lambda_2 = 2/3$, applying the same process yields:
+Normalizing this vector to have length 1 gives:
+
 $$
-\mathbf{v}_2 = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ 1 \end{bmatrix}
+\mathbf{v}_1 =
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 \\
+-1
+\end{bmatrix}
 $$
 
+For $\lambda_2 = \frac{2}{3}$, applying the same process yields:
+
+$$
+\mathbf{v}_2 =
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 \\
+1
+\end{bmatrix}
+$$
 
 ## Step 4: Finding Principal Components
 We select the eigenvector associated with the largest eigenvalue ($\lambda_1 = 2.67$). 
