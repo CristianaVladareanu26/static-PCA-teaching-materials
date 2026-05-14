@@ -98,7 +98,7 @@ Use the applet below to project the original 3D dataset onto its 2D equivalent.
 Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. button one is available '1. center data' that centers the dataset.  button 2 is available '2. find eigenvectors' that draws the eigenvectors of the dataset. button 3 is available '3. find PCs' that selects 1/2 PCs with the most variance. button 4 is available '4. project data' that projects the datapoints onto the given principal components
 
 <iframe 
-    src="../_static/pca_applet.html" 
+    src="/multimodal-PCA-teaching-materials/pca_applet.html"
     width="100%" 
     height="700px" 
     style="border: none;" 
@@ -107,7 +107,7 @@ Insert interactive visualization: a random 3D dataset with a 'generate random da
 </iframe>
 
 <iframe 
-    src="{{ pathto('_static/pca_applet.html', 1) }}"
+    src="${BASE_URL}/pca_applet.html"
     width="100%" 
     height="700px"
     style="border: none;" 
