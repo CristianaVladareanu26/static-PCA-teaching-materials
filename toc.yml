@@ -10,7 +10,7 @@ project:
           children:
             - file: content/Vectors.ipynb
             - file: content/Matrices.ipynb
-        - title: Statistical Foundations
+        - title: Statistics
           children:
             - file: content/Statistics.md
             - file: content/CovarianceMatrix.md
