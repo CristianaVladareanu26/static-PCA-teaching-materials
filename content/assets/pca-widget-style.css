@@ -1,6 +1,6 @@
 .pca-container {
   width: 100%;
-  height: 720px; /* wider overall */
+  height: 850px; /* wider overall */
   border: 1px solid #e1e4e8;
   border-radius: 10px;
   overflow: hidden;
@@ -82,7 +82,7 @@
 
 /* input */
 .pca-controls input {
-  width: 70px;
+  width: 60px;
   padding: 5px 6px;
   border: 1px solid #d0d7de;
   border-radius: 6px;
