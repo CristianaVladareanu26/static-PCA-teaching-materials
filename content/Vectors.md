@@ -28,39 +28,6 @@ Source: @duda1997
 The *dot product* of two vectors is a scalar obtained by multiplying corresponding components and summing the results. Beyond its algebraic definition, it has an important geometric meaning:
 **The dot product measures how much one vector points in the direction of another.**
 
----
-Watch the video below to understand the geometrical intuition behind the dot product. 
-Source: @3blue1brown2016-2
-
-<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-    <iframe
-        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-        src="https://www.youtube.com/embed/kYB8IZa5AuE?si=05H1OiuydGVIlaiy&start=84&end=130&cc_load_policy=1"
-        frameborder="0"
-        allowfullscreen
-    ></iframe>
-</div>
-
----
-
-(dot-prod-unit)=
-```{tip} Dot Product with a Unit Vector
-:class: dropdown
-:open: true
-:icon: true
-If $\mathbf{u}$ is a unit vector (meaning $\|\mathbf{u}\| = 1$), then
-
-$$
-\mathbf{a} \cdot \mathbf{u} = \|\mathbf{a}\|\cos(\theta)
-$$
-
-This quantity has a special meaning:
-
-The dot product of a vector with a unit vector gives the length of the component of that vector in the direction of the unit vector.
-
-In other words, it tells us how far the vector extends along that direction.
-```
-
 For two vectors:
 
 $$
@@ -91,7 +58,28 @@ $$
 \mathbf{a} \cdot \mathbf{b} = a_1 b_1 + a_2 b_2 + \cdots + a_n b_n
 $$
 
+
 ---
+Watch the video below to understand the geometrical intuition behind the dot product. 
+Source: @3blue1brown2016-2
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        src="https://www.youtube.com/embed/LyGKycYT2v0?si=agH-kLQ7rMi6lY0P&amp&start=84&end=130&cc_load_policy=1"
+        frameborder="0"
+        allowfullscreen
+    ></iframe>
+</div>
+---
+
+```{code-cell} ipython3
+:tags: [hide-input]
+
+from IPython.display import Video
+Video("figures/lineartransform1.mp4", embed=True)
+```
+
 
 ```{admonition} Example: Dot product in 2D
 :class: dropdown
@@ -134,34 +122,17 @@ The projection of one vector onto another describes the component of the first v
 
 There are two related forms of projection: **scalar projection** and **vector projection**. The scalar projection is derived from the vector projection and represents only the *length* of the projection. The vector projection, on the other hand, gives the *full projected vector*, including both direction and magnitude.
 
-The scalar projection of **a** onto **b** is:
+The *scalar* projection of **a** onto **b** is:
 
 $$
 s = \|\mathbf{a}\| \cos(\theta) = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{b}\|}
 $$
 
-The vector projection of **a** onto **b** is:
+The *vector* projection of **a** onto **b** is:
 
 $$
 \text{proj}_{\mathbf{b}}(\mathbf{a}) = \|\mathbf{a}\| \cos(\theta)\,\frac{\mathbf{b}}{\|\mathbf{b}\|} = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{b}\|^2} \mathbf{b}
 $$
-
-(projection-unit)=
-```{tip} Projection onto a Unit Vector
-:class: dropdown
-:open: true
-:icon: true
-If $\mathbf{u}$ is a unit vector (meaning $\|\mathbf{u}\| = 1$), the vector projection simplifies to:
-
-$$
-\operatorname{proj}_{\mathbf{u}}(\mathbf{a}) = (\mathbf{a} \cdot \mathbf{u})\,\mathbf{u}
-$$
-
-This works because dividing by $\|\mathbf{u}\|^2$ is unnecessary when $\|\mathbf{u}\| = 1$.
-
-In this case, the dot product $\mathbf{a} \cdot \mathbf{u}$ directly gives the scalar projection, and multiplying by $\mathbf{u}$ converts it into the full projected vector.
-```
-
 
 
 ```{figure} figures/projection.*
@@ -171,3 +142,5 @@ In this case, the dot product $\mathbf{a} \cdot \mathbf{u}$ directly gives the s
 Projection of vector **a** onto vector **b**.
 Source: @projection
 ```
+
+
