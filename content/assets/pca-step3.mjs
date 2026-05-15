@@ -202,7 +202,13 @@ export default {
     // GENERATE DATA 
     // =========================
     function generate() {
-      const n = parseInt(inputPoints.value) || 150;
+      // Get the value, default to 0 if empty, and clamp between 0 and 1000
+      let n = parseInt(inputPoints.value);
+      if (isNaN(n) || n < 10) n = 10;
+      if (n > 2000) n = 2000;
+      
+      // Force the UI input to reflect the clamped value
+      inputPoints.value = n;
 
       state.raw = [];
 
