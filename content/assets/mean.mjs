@@ -122,15 +122,15 @@ export default {
       ctx2.clearRect(0, 0, w2, h2);
 
       // Draw Grid/Axes on Chart 1
-      ctx1.strokeStyle = '#e1e4e8';
-      ctx1.lineWidth = 1;
+      ctx1.strokeStyle = '#808080';
+      ctx1.lineWidth = 2;
       ctx1.beginPath();
       ctx1.moveTo(0, h1/2); ctx1.lineTo(w1, h1/2); // X-axis
       ctx1.moveTo(w1/2, 0); ctx1.lineTo(w1/2, h1); // Y-axis
       ctx1.stroke();
 
       // Draw Grid/Axes on Chart 2 (X-axis only)
-      ctx2.strokeStyle = '#e1e4e8';
+      ctx2.strokeStyle = '#808080';
       ctx2.lineWidth = 2;
       ctx2.beginPath();
       ctx2.moveTo(0, h2/2); ctx2.lineTo(w2, h2/2);
@@ -230,7 +230,7 @@ export default {
         onUpdate: renderFrame
       });
 
-      btnMean.disabled = true;
+      btnMean.disabled = false;
     }
 
     // =========================
