@@ -11,18 +11,6 @@ $$
 \mu = \frac{1}{n} \sum_{i=1}^{n} x_i
 $$
 
---- 
-*Use the widget below to generate a random dataset.*  
-*Visualise the mean of the dataset in both 2D and 1D.*
-
-```{anywidget} assets/mean.mjs
-:css: assets/variance.css
-{
-  "step": 0
-}
-```
-
----
 
 ```{admonition} Example: Calculating the mean
 :class: dropdown
@@ -47,22 +35,6 @@ $$
 
 A high variance means the data is widely spread, while a low variance means the data is tightly clustered around the mean.
 
---- 
-*Use the widget below to generate a random dataset.*   
-*Click button 1 to visualize the direction of maximum variance: where the data spreads out the most.*   
-*Click button 2 to see how each 2D point projects onto the line of maximum variance.*   
-*Click button 3 to watch the data compress into the 1D number line.*   
-
- 
-
-```{anywidget} assets/variance.mjs
-:css: assets/variance.css
-{
-  "step": 0
-}
-```
-
----
 
 ```{admonition} Example: Calculating variance
 :class: dropdown
