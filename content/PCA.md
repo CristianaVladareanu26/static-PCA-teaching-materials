@@ -48,7 +48,6 @@ Next, we calculate the {ref}`covariance <covariance>` matrix to capture how each
 The {ref}`covariance matrix <covariance-matrix>` $\Sigma$ for a mean-centered data matrix $\mathbf{X}$ with $n$ samples is calculated as:
 $$ \mathbf{C} = \frac{1}{n-1} \mathbf{X}_{\text{centered}}^T \mathbf{X}_{\text{centered}} $$
 
-Insert some sort of visualization that explains the point of the covariance matrix
 
 ## Step 3: Eigenvalue Decomposition
 Given the covariance matrix $\mathbf{C}$ (which is a square, symmetric matrix), eigenvalue decomposition is the process of finding a set of scalars ({ref}`eigenvalues <eigenvalues>`) and vectors ({ref}`eigenvectors <eigenvectors>`) such that:
@@ -63,10 +62,18 @@ Here, $\mathbf{v}$ represents an eigenvector and $\lambda$ represents its corres
 Eigenvectors indicate the directions of maximum variance in the data (the Principal Components), while eigenvalues quantify the magnitude of the variance captured by each of those Principal Components.
 ```
 
-Use the applet below to find the eigenvectors of the dataset.
-Observe how the first eigenvector points to the direction with the most variance in the data, and the second eigenvector points to the direction with the second most variance.
 
-Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. button one is available '1. center data' that centers the dataset.  button 2 is available '2. find eigenvectors' that draws the eigenvectors of the dataset.
+--- 
+*Use the widget below to generate a dataset, center it, then find its eigenvectors. Observe how the first eigenvector points to the direction with the most variance in the data, and the second eigenvector points to the direction with the second most variance.*
+
+```{anywidget} assets/pca-step2.mjs
+:css: assets/pca-widget-style.css
+{
+  "step": 0
+}
+```
+
+---
 
 
 ## Step 4: Finding Principal Components
