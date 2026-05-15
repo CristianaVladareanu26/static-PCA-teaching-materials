@@ -7,11 +7,11 @@ abstract: |
 
 **Machine Learning (ML)** is a field of study that focuses on designing algorithms that learn patterns directly from data. Rather than relying on explicitly programmed rules, machine learning systems use data to automatically identify relationships, detect structure, and make predictions or decisions.
 
-At the core of machine learning lies **data**. To use a data object in a Machine Learning algorithm, we must represent it numerically. But how do we represent a real-world object so that a mathematical function can process it?
+At the core of ML lies **data**. To use a data object in a machine learning algorithm, we must represent it numerically. But how do we represent a real-world object so that a mathematical function can process it?
 
 (features)=
 ### Features
-A *feature* is a measurable property or characteristic of an object. Features provide the numerical representation that allows Machine Learning algorithms to process real-world data. All features describing an object are combined into a vector, called a *feature vector*.
+A *feature* is a measurable property or characteristic of an object. Features provide the numerical representation that allows machine learning algorithms to process real-world data. All features describing an object are combined into a vector, called a *feature vector*.
 
 ```{admonition}  Example: a house object
 :class: dropdown
@@ -61,7 +61,7 @@ Each feature represents one measurable *dimension* of the data. If a dataset con
 
 ```{figure} figures/dimensionality.*
 :label: fig-dimensionality
-:alt: A visual representation of one-dimensional, two-dimensional and three-dimensional data.
+:alt: A visual representation of one-dimensional, two-dimensional and three-dimensional datasets.
 
 One-dimensional, two-dimensional and three-dimensional data.
 Source: @gleeson2017
