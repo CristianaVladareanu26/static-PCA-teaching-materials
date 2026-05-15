@@ -69,8 +69,16 @@ export default {
     controlsA.addEventListener('change', renderAll);
     controlsB.addEventListener('change', renderAll);
 
-    sceneA.add(new THREE.AxesHelper(3));
-    sceneB.add(new THREE.AxesHelper(3));
+    // Create Axes and force them to be gray
+    const axesA = new THREE.AxesHelper(3);
+    axesA.material.vertexColors = false; // Disable default RGB
+    axesA.material.color.setHex(0x888888); // Set to uniform gray
+    sceneA.add(axesA);
+
+    const axesB = new THREE.AxesHelper(3);
+    axesB.material.vertexColors = false; 
+    axesB.material.color.setHex(0x888888);
+    sceneB.add(axesB);
 
     // =========================
     // STATE
