@@ -57,16 +57,8 @@ site:
     hide_authors: true
     style:        style/custom.css
   
-  # include links to downloads
-  actions:
-    - title:      PDF
-      url:        ./exports/report_tex.pdf
-    - title:      Typst PDF
-      url:        ./exports/thesis.pdf
-  
   # custom parts
   parts:
     footer:       style/footer.md
-    banner:       Visit our new website at [https://jboss.tudelft.nl](https://jboss.tudelft.nl) for the latest updates and resources! See also our newest [Typst template](https://github.com/TUD-JB-OS/typst_template.git) version
 
 # 
