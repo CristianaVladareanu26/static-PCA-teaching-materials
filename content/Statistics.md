@@ -1,5 +1,6 @@
 # Statistical Foundations
 
+
 (mean)=
 ## Mean
 The *mean* (or average) is a measure of the central tendency of a dataset. It represents the value around which the data is centered, and it is calculated by summing up all the values in the dataset and dividing them by the number of values. 
@@ -11,8 +12,8 @@ $$
 $$
 
 --- 
-*Use the widget below to generate a random dataset.*
-*Click button 1 to visualise the mean of the dataset in both 2D and 1D.*
+*Use the widget below to generate a random dataset.*  
+*Visualise the mean of the dataset in both 2D and 1D.*
 
 ```{anywidget} assets/mean.mjs
 :css: assets/variance.css
@@ -48,10 +49,13 @@ A high variance means the data is widely spread, while a low variance means the 
 
 --- 
 *Use the widget below to generate a random dataset.*
-*Click button 1 to visualize the direction  of maximum variance: where the data spreads out the most.*
+
+*Click button 1 to visualize the direction of maximum variance: where the data spreads out the most.*
+
 *Click button 2 to see how each 2D point projects onto the line of maximum variance.*
-*Click button 3 to watch the data compress into a 1D number line.*
-*Experiment with different datasets to understand how calculating variance and projecting the data effectively reduces its dimensions while keeping as much of the original spread as possible.*
+
+*Click button 3 to watch the data compress into the 1D number line.*
+
 
 ```{anywidget} assets/variance.mjs
 :css: assets/variance.css
