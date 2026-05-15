@@ -17,9 +17,10 @@ no-update-date: true
 
 ## Teaching Principal Component Analysis Through Multiple Modalities - Instructional Materials
 
-This tutorial was created as part of a Bachelor thesis conducted during the CSE3000 Research Project course in the faculty of EEMCS. It serves as an open educational resource for first-year Computer Science students. It was designed as an introduction to the concept of Principal Component Analysis and assumes no prior knowledge of Machine Learning.
 
+This tutorial was developed as part of a Bachelor’s thesis conducted within the CSE3000 Research Project course at the Faculty of Electrical Engineering, Mathematics and Computer Science (EEMCS), Delft University of Technology.
 
+It serves as an open educational resource aimed at introducing first-year Computer Science students to the fundamental concepts behind Principal Component Analysis (PCA). The material is designed under the assumption that students have no prior experience with Machine Learning.
 
 
 This Jupyter Book template was originally created by:  
@@ -31,9 +32,11 @@ This Jupyter Book template was originally created by:
 
 ## About this material
 
-This project explores the use of Jupyter Book for open educational publishing at TU Delft. It is intended as a structured and accessible introduction to foundational concepts in Machine Learning, specifically designed for students in their first year of Computer Science.
+This project explores the use of Jupyter Book as a medium for structured and accessible educational content in technical subjects. It is intended as an introductory learning resource in Machine Learning, with a specific focus on Principal Component Analysis as a core dimensionality reduction technique.
 
-The tutorial emphasizes multimodal instruction and gradually introduces key concepts without assuming prior knowledge of Machine Learning or advanced mathematics.
+The tutorial adopts a multimodal teaching approach, combining mathematical explanations, visual intuition, and interactive elements to support conceptual understanding. Key ideas are introduced gradually, with an emphasis on building intuition.
+
+No prior knowledge of Machine Learning or advanced mathematics is required.
 
 ---
 
