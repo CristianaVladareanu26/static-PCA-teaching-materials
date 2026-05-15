@@ -312,14 +312,17 @@ export default {
 
       state.raw = [];
       const center = new Vec2((Math.random()-0.5)*2, (Math.random()-0.5)*2);
+      
+      // Calculate a random orientation for the cluster once per generation
+      const randomAngle = Math.random() * Math.PI * 2;
 
       for (let i = 0; i < n; i++) {
         const spread = randn() * 5.0; 
         const noise = randn() * 1.8; 
         
-        const angle = Math.PI / 6; 
-        const x = spread * Math.cos(angle) - noise * Math.sin(angle);
-        const y = spread * Math.sin(angle) + noise * Math.cos(angle);
+        // Apply the random angle to every point
+        const x = spread * Math.cos(randomAngle) - noise * Math.sin(randomAngle);
+        const y = spread * Math.sin(randomAngle) + noise * Math.cos(randomAngle);
 
         state.raw.push(new Vec2(x, y).add(center));
       }
