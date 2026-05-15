@@ -279,11 +279,6 @@ export default {
       draw(groupA, state.raw, matA);
       draw(groupB, state.raw, matB);
 
-      btnCenter.disabled = false;
-      btnEigen.disabled = true;
-      btnPCs.disabled = true;
-      btnProj.disabled = true;
-
       renderAll();
     }
 
@@ -306,8 +301,6 @@ export default {
       state.volumeB = createBoundingEllipsoid(state.centered, 0x6a8ba4);
       sceneB.add(state.volumeB);
 
-      btnCenter.disabled = true;
-      btnEigen.disabled = false;
       renderAll();
     }
 
@@ -366,8 +359,7 @@ export default {
       ];
       
       drawEigen();
-      btnEigen.disabled = true;
-      btnPCs.disabled = false;
+
     }
 
     // =========================
@@ -440,8 +432,7 @@ export default {
 
       gsap.ticker.add(renderAll);
       
-      btnPCs.disabled = true;
-      btnProj.disabled = false;
+  
     }
 
     // =========================
@@ -449,44 +440,78 @@ export default {
     // =========================
     function project() {
       const [pc1, pc2, pc3] = state.eigenvectors;
-      btnProj.disabled = true;
-
-      // 1. Setup the 2D Projection Plane (Normal is PC3)
+    
+      // -----------------------------------------
+      // 1. Compute projection bounds in PC1/PC2
+      // -----------------------------------------
+      let minX = Infinity, maxX = -Infinity;
+      let minY = Infinity, maxY = -Infinity;
+    
+      state.centered.forEach(p => {
+        const x = p.dot(pc1);
+        const y = p.dot(pc2);
+    
+        minX = Math.min(minX, x);
+        maxX = Math.max(maxX, x);
+        minY = Math.min(minY, y);
+        maxY = Math.max(maxY, y);
+      });
+    
+      const width = (maxX - minX) * 1.2;
+      const height = (maxY - minY) * 1.2;
+    
+      // -----------------------------------------
+      // 2. Create rectangular projection plane
+      // -----------------------------------------
       if (state.plane) sceneB.remove(state.plane);
-      
-      const planeGeo = new THREE.CircleGeometry(12, 64);
-      const planeMat = new THREE.MeshBasicMaterial({ 
-        color: 0x34c759, 
-        transparent: true, 
-        opacity: 0, // start invisible
+    
+      const planeGeo = new THREE.PlaneGeometry(width, height);
+      const planeMat = new THREE.MeshBasicMaterial({
+        color: 0x34c759,
+        transparent: true,
+        opacity: 0,
         side: THREE.DoubleSide,
         depthWrite: false
       });
+    
       state.plane = new THREE.Mesh(planeGeo, planeMat);
-      
-      // Align the plane with the PC1/PC2 subspace by looking at PC3
+    
+      // Align plane so its normal is PC3
       state.plane.lookAt(pc3);
       sceneB.add(state.plane);
-
-      // 2. Animate the environments (Plane IN, 3D Volume OUT)
-      gsap.to(planeMat, { opacity: 0.15, duration: 1.5, ease: "power2.inOut" });
+    
+      // -----------------------------------------
+      // 3. Animate plane in & 3D volume out
+      // -----------------------------------------
+      gsap.to(planeMat, {
+        opacity: 0.18,
+        duration: 1.5,
+        ease: "power2.inOut"
+      });
+    
       if (state.volumeB) {
-        gsap.to(state.volumeB.material, { opacity: 0, duration: 1.5, ease: "power2.inOut" });
+        gsap.to(state.volumeB.material, {
+          opacity: 0,
+          duration: 1.5,
+          ease: "power2.inOut"
+        });
       }
-
-      // 3. Animate the points squashing onto the plane
+    
+      // -----------------------------------------
+      // 4. Animate points onto PC1/PC2 plane
+      // -----------------------------------------
       state.centered.forEach((p, index) => {
         const x = p.dot(pc1);
         const y = p.dot(pc2);
-
+    
         const targetPos = new THREE.Vector3(
           x * pc1.x + y * pc2.x,
           x * pc1.y + y * pc2.y,
           x * pc1.z + y * pc2.z
         );
-
+    
         const mesh = groupB.children[index];
-
+    
         gsap.to(mesh.position, {
           x: targetPos.x,
           y: targetPos.y,
@@ -495,7 +520,7 @@ export default {
           ease: "power2.inOut"
         });
       });
-      
+    
       gsap.ticker.add(renderAll);
     }
 
