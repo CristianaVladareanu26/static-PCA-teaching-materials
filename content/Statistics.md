@@ -48,14 +48,12 @@ $$
 A high variance means the data is widely spread, while a low variance means the data is tightly clustered around the mean.
 
 --- 
-*Use the widget below to generate a random dataset.*
+*Use the widget below to generate a random dataset.*   
+*Click button 1 to visualize the direction of maximum variance: where the data spreads out the most.*   
+*Click button 2 to see how each 2D point projects onto the line of maximum variance.*   
+*Click button 3 to watch the data compress into the 1D number line.*   
 
-*Click button 1 to visualize the direction of maximum variance: where the data spreads out the most.*
-
-*Click button 2 to see how each 2D point projects onto the line of maximum variance.*
-
-*Click button 3 to watch the data compress into the 1D number line.*
-
+ 
 
 ```{anywidget} assets/variance.mjs
 :css: assets/variance.css
