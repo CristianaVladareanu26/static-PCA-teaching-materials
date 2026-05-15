@@ -179,21 +179,21 @@ export default {
 
     function createTextSprite(text, colorStr) {
       const canvas = document.createElement('canvas');
-      canvas.width = 256;
-      canvas.height = 128;
+      canvas.width = 512;
+      canvas.height = 256;
       const ctx = canvas.getContext('2d');
 
       ctx.fillStyle = colorStr;
-      ctx.font = 'bold 60px sans-serif';
+      ctx.font = 'bold 96px sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(text, 128, 64);
+      ctx.fillText(text, 256, 128);
 
       const texture = new THREE.CanvasTexture(canvas);
       const spriteMat = new THREE.SpriteMaterial({ map: texture, depthTest: false });
       const sprite = new THREE.Sprite(spriteMat);
       
-      sprite.scale.set(1.5, 0.75, 1); 
+      sprite.scale.set(3.0, 1.5, 1); 
       sprite.renderOrder = 9999;
       return sprite;
     }
@@ -395,8 +395,8 @@ export default {
           const labelText = i === 0 ? "PC1" : "PC2";
           const colorStr = i === 0 ? "#ff3b30" : "#34c759";
           
-          // 1. Create and position label slightly past the tip of the arrow (length 4.5)
-          const tipPos = state.eigenvectors[i].clone().multiplyScalar(4.5);
+          // 1. Create and position label slightly past the tip of the arrow
+          const tipPos = state.eigenvectors[i].clone().multiplyScalar(5.0);
           const labelSprite = createTextSprite(labelText, colorStr);
           labelSprite.position.copy(tipPos);
           
