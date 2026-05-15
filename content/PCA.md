@@ -91,10 +91,19 @@ So, the eigenvector with the highest eigenvalue corresponds to the first Princip
 A Principal Component is a new axis created from a linear combination of the original features. It is chosen to maximize the variance of the data projected onto it. 
 ```
 
-Use the applet below to highlight the first Principal Component.
-Observe how this Principal Component describes the direction where the data is most spread out, i.e. has the maximum variance. 
+--- 
+*Use the widget below to generate a random dataset, center it, and find its eigenvectors. Then, find the first two Principal Components of the dataset.*
+*Observe how the first Principal Component (red PC1) describes the direction where the data is most spread out, i.e. has the maximum variance.*
+*The second Principal Component (green PC2) describes the direction of the next highest variance in the data, and is orthogonal (perpendicular) to PC1.*
 
-Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. button one is available '1. center data' that centers the dataset.  button 2 is available '2. find eigenvectors' that draws the eigenvectors of the dataset. button 3 is available '3. find PCs' that selects 1/2 PCs with the most variance.
+```{anywidget} assets/pca-step3.mjs
+:css: assets/pca-widget-style.css
+{
+  "step": 0
+}
+```
+
+---
 
 ## Step 5: Project the Data
 Finally, we project the original data onto the dimensions represented by the selected Principal Components. This means we effectively reduce the number of features (dimensions) while keeping the most important patterns in the data!
