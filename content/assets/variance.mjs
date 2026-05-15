@@ -13,6 +13,11 @@ class Vec2 {
     const m = this.mag(); 
     return m === 0 ? new Vec2(0, 0) : new Vec2(this.x / m, this.y / m); 
   }
+  rotate(angle) {
+    const c = Math.cos(angle);
+    const s = Math.sin(angle);
+    return new Vec2(this.x * c - this.y * s, this.x * s + this.y * c);
+  }
 }
 
 export default {
@@ -68,7 +73,7 @@ export default {
     view2.appendChild(canvas2);
 
     views.append(view1, view2);
-    container.append(controls, views);
+    container.append(views, controls);
     el.appendChild(container);
 
     const ctx1 = canvas1.getContext('2d');
@@ -83,7 +88,8 @@ export default {
       pc1: new Vec2(1, 0), 
       animVar: 0,      
       animProjLine: 0, 
-      animProject: 0,  
+      animRotate: 0,   // Phase 1 of projection
+      animCollapse: 0, // Phase 2 of projection
       scale: 15 
     };
 
@@ -137,20 +143,15 @@ export default {
       ctx1.clearRect(0, 0, w1, h1);
       ctx2.clearRect(0, 0, w2, h2);
 
-      // Draw Grid/Axes on Chart 1
+      // ==========================================
+      // CHART 1: Standard 2D View
+      // ==========================================
       ctx1.strokeStyle = '#e1e4e8';
       ctx1.lineWidth = 1;
       ctx1.beginPath();
       ctx1.moveTo(0, h1/2); ctx1.lineTo(w1, h1/2);
       ctx1.moveTo(w1/2, 0); ctx1.lineTo(w1/2, h1);
       ctx1.stroke();
-
-      // Draw Grid/Axes on Chart 2
-      ctx2.strokeStyle = '#e1e4e8';
-      ctx2.lineWidth = 2;
-      ctx2.beginPath();
-      ctx2.moveTo(0, h2/2); ctx2.lineTo(w2, h2/2);
-      ctx2.stroke();
 
       if (state.raw.length === 0) return;
 
@@ -170,7 +171,7 @@ export default {
         ctx1.stroke();
       }
 
-      // LAYER 2: Original 2D Points (drawn first so lines can go over them)
+      // LAYER 2: Original 2D Points
       state.raw.forEach(p => {
         const pPix = toPix(canvas1, p);
         ctx1.fillStyle = '#6a8ba4';
@@ -179,18 +180,15 @@ export default {
         ctx1.fill();
       });
 
-      // LAYER 3: Red Projection Lines & 1D Points
+      // LAYER 3: Red Projection Lines
       state.raw.forEach(p => {
-        const pPix = toPix(canvas1, p);
-        
-        // Find math projection of point onto the PC1 line
-        const vFromMean = p.sub(state.mean);
-        const distOnLine = vFromMean.dot(state.pc1);
-        const projMath = state.mean.add(state.pc1.mult(distOnLine));
-        const projPix = toPix(canvas1, projMath);
-
-        // Draw Red Projection Line OVER the points
         if (state.animProjLine > 0) {
+          const pPix = toPix(canvas1, p);
+          const vFromMean = p.sub(state.mean);
+          const distOnLine = vFromMean.dot(state.pc1);
+          const projMath = state.mean.add(state.pc1.mult(distOnLine));
+          const projPix = toPix(canvas1, projMath);
+
           const curX = pPix.x + (projPix.x - pPix.x) * state.animProjLine;
           const curY = pPix.y + (projPix.y - pPix.y) * state.animProjLine;
 
@@ -203,31 +201,97 @@ export default {
           ctx1.stroke();
           ctx1.setLineDash([]); 
         }
-
-        // Draw 1D Projected Point on Chart 2
-        if (state.animProject > 0) {
-          const targetX = (w2 / 2) + (distOnLine * state.scale);
-          const targetY = h2 / 2;
-          const startX = projPix.x;
-          const startY = 0; 
-
-          const animX = startX + (targetX - startX) * state.animProject;
-          const animY = startY + (targetY - startY) * state.animProject;
-
-          // Matched color to 2D dots
-          ctx2.fillStyle = '#6a8ba4'; 
-          ctx2.beginPath();
-          ctx2.arc(animX, animY, 5, 0, Math.PI * 2);
-          ctx2.fill();
-        }
       });
 
-      // LAYER 4: Draw Mean Point on top of everything
+      // LAYER 4: Mean Point
       if (state.animVar > 0) {
         ctx1.fillStyle = '#000000';
         ctx1.beginPath();
         ctx1.arc(pMean.x, pMean.y, 5, 0, Math.PI * 2);
         ctx1.fill();
+      }
+
+      // ==========================================
+      // CHART 2: Animated Projection View
+      // ==========================================
+      ctx2.strokeStyle = '#e1e4e8';
+      ctx2.lineWidth = 2;
+      ctx2.beginPath();
+      ctx2.moveTo(0, h2/2); ctx2.lineTo(w2, h2/2);
+      ctx2.stroke();
+
+      // Math for rotation and collapse
+      const pcAngle = Math.atan2(state.pc1.y, state.pc1.x);
+      const currentRot = -pcAngle * state.animRotate;
+      const yScale = 1 - state.animCollapse;
+      
+      // Translate the mean's Y position to 0 during the collapse
+      const currentMeanY = state.mean.y * yScale;
+      const currentMean = new Vec2(state.mean.x, currentMeanY);
+
+      // LAYER 1: Rotating Max Variance Direction (PC1)
+      if (state.animVar > 0) {
+        const lineLen = 25 * state.animVar; 
+        
+        let dir = state.pc1.rotate(currentRot);
+        dir.y *= yScale; 
+        
+        const pStartPix = toPix(canvas2, currentMean.add(dir.mult(-lineLen)));
+        const pEndPix = toPix(canvas2, currentMean.add(dir.mult(lineLen)));
+
+        ctx2.strokeStyle = '#007aff';
+        ctx2.lineWidth = 3;
+        ctx2.beginPath();
+        ctx2.moveTo(pStartPix.x, pStartPix.y);
+        ctx2.lineTo(pEndPix.x, pEndPix.y);
+        ctx2.stroke();
+      }
+
+      // LAYER 2 & 3: Rotating Original 2D Points & Red Projection Lines
+      state.raw.forEach(p => {
+        // Rotate and collapse the point relative to the mean
+        const v = p.sub(state.mean);
+        let vRot = v.rotate(currentRot);
+        vRot.y *= yScale;
+        
+        const pPix = toPix(canvas2, currentMean.add(vRot));
+
+        // Rotate and collapse the projection path identically
+        if (state.animProjLine > 0) {
+          const distOnLine = v.dot(state.pc1);
+          const proj = state.pc1.mult(distOnLine);
+          
+          let projRot = proj.rotate(currentRot);
+          projRot.y *= yScale;
+          
+          const projPix = toPix(canvas2, currentMean.add(projRot));
+
+          const curX = pPix.x + (projPix.x - pPix.x) * state.animProjLine;
+          const curY = pPix.y + (projPix.y - pPix.y) * state.animProjLine;
+
+          ctx2.strokeStyle = '#ff3b30';
+          ctx2.lineWidth = 1.5;
+          ctx2.setLineDash([4, 4]);
+          ctx2.beginPath();
+          ctx2.moveTo(pPix.x, pPix.y);
+          ctx2.lineTo(curX, curY);
+          ctx2.stroke();
+          ctx2.setLineDash([]); 
+        }
+
+        ctx2.fillStyle = '#6a8ba4';
+        ctx2.beginPath();
+        ctx2.arc(pPix.x, pPix.y, 4, 0, Math.PI * 2);
+        ctx2.fill();
+      });
+
+      // LAYER 4: Draw Mean Point
+      if (state.animVar > 0) {
+        const pMeanPix = toPix(canvas2, currentMean);
+        ctx2.fillStyle = '#000000';
+        ctx2.beginPath();
+        ctx2.arc(pMeanPix.x, pMeanPix.y, 5, 0, Math.PI * 2);
+        ctx2.fill();
       }
     }
 
@@ -238,7 +302,8 @@ export default {
       gsap.killTweensOf(state);
       state.animVar = 0;
       state.animProjLine = 0;
-      state.animProject = 0;
+      state.animRotate = 0;
+      state.animCollapse = 0;
 
       let n = parseInt(inputPoints.value);
       if (isNaN(n) || n < 10) n = 10;
@@ -249,7 +314,6 @@ export default {
       const center = new Vec2((Math.random()-0.5)*2, (Math.random()-0.5)*2);
 
       for (let i = 0; i < n; i++) {
-        // Increased spread and noise to separate the data more
         const spread = randn() * 5.0; 
         const noise = randn() * 1.8; 
         
@@ -313,9 +377,19 @@ export default {
     }
 
     function projectData() {
-      gsap.to(state, {
-        animProject: 1, duration: 1.5, ease: "back.out(1.2)",
-        onUpdate: renderFrame
+      const tl = gsap.timeline({ onUpdate: renderFrame });
+      
+      // Step 1: Rotate the points so PC1 is horizontal
+      tl.to(state, {
+        animRotate: 1, 
+        duration: 1.2, 
+        ease: "power2.inOut"
+      })
+      // Step 2: Squash the points onto the line
+      .to(state, {
+        animCollapse: 1, 
+        duration: 1.2, 
+        ease: "power2.inOut"
       });
 
       btnProject.disabled = true;
