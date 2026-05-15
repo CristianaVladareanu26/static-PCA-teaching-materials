@@ -104,5 +104,5 @@
   color: #57606a;
 }
 
-#chart1-wrapper::before { content: "2D Data & Variance Direction"; }
-#chart2-wrapper::before { content: "1D Projection (Principal Component 1)"; }
+#chart1-wrapper::before { content: "2D Data"; }
+#chart2-wrapper::before { content: "1D Projected Data"; }
