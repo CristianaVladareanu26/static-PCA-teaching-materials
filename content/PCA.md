@@ -32,7 +32,8 @@ $$ \mathbf{X}_{\text{centered}} = \mathbf{X} - \mu $$
 *Here, $\mathbf{X}$ is the dataset matrix and $\mu$ is the mean vector of the features.*
 
 --- 
-*Use the widget below to generate a random dataset, then center it. Experiment with different datasets to understand the effect of centering.*
+*Use the widget below to generate a random dataset, then center it.*   
+*Experiment with different datasets to understand the effect of centering.*
 
 ```{anywidget} assets/pca-step1.mjs
 :css: assets/pca-widget-style.css
@@ -65,7 +66,8 @@ Eigenvectors indicate the directions of maximum variance in the data (the Princi
 
 
 --- 
-*Use the widget below to generate a dataset, center it, then find its eigenvectors. Observe how the first eigenvector points to the direction with the most variance in the data, and the second eigenvector points to the direction with the second most variance.*
+*Use the widget below to generate a dataset, center it, then find its eigenvectors.*   
+*Observe how the first eigenvector points to the direction with the most variance in the data, and the second eigenvector points to the direction with the second most variance.*
 
 ```{anywidget} assets/pca-step2.mjs
 :css: assets/pca-widget-style.css
@@ -94,7 +96,7 @@ A Principal Component is a new axis created from a linear combination of the ori
 
 --- 
 *Use the widget below to generate a random dataset, center it, and find its eigenvectors. Find the first two Principal Components of the dataset.*  
-*Observe how the first Principal Component (red PC1) describes the direction where the data is most spread out, i.e. has the maximum variance.*  
+*The first Principal Component (red PC1) describes the direction where the data is most spread out, i.e. has the maximum variance.*  
 *The second Principal Component (green PC2) describes the direction of the next highest variance in the data, and is orthogonal (perpendicular) to PC1.*  
 
 ```{anywidget} assets/pca-step3.mjs
@@ -119,7 +121,7 @@ Geometrically, this matrix multiplication effectively **projects the original da
 --- 
 *Use the widget below to generate a random dataset, center it, find its eigenvectors, then highlight the first two PCs.*  
 *Project the original 3D dataset into its 2D equivalent. Observe how the data is projected from 3D (blue sphere in the left graph) to 2D (green plane in the right graph).*   
-*Experiment with different datasets to observe the full effect of the PCA algorithm.*
+*Experiment with different datasets to observe the full effect of the PCA algorithm.*   
 
 ```{anywidget} assets/pca-step4.mjs
 :css: assets/pca-widget-style.css
