@@ -15,7 +15,7 @@ $$
 *Click button 1 to visualise the mean of the dataset in both 2D and 1D.*
 
 ```{anywidget} assets/mean.mjs
-:css: assets/mean.css
+:css: assets/variance.css
 {
   "step": 0
 }
