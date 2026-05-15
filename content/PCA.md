@@ -30,8 +30,17 @@ $$ \mathbf{X}_{\text{centered}} = \mathbf{X} - \mu $$
 
 *(Where $\mathbf{X}$ is the dataset matrix and $\mu$ is the mean vector of the features).*
 
-Use the applet below to generate a random dataset, then center it.
-Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. one button is available 'step 1: center data' that centers the dataset.
+--- 
+*Use the widget below to generate a random dataset, then center it. Experiment with different datasets to understand the effect of centering.*
+
+```{anywidget} assets/pca-step1.mjs
+:css: assets/pca-widget-style.css
+{
+  "step": 0
+}
+```
+
+---
 
 ## Step 2: Calculating the Covariance Matrix
 Next, we calculate the {ref}`covariance <covariance>` matrix to capture how each pair of features in the data varies together. This allows us to see how features relate to each other - whether they increase or decrease together.
