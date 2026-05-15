@@ -218,10 +218,38 @@ export default {
       return sprite;
     }
 
+    function resetProjection() {
+  // Remove plane
+  if (state.plane) {
+    sceneB.remove(state.plane);
+    state.plane.geometry.dispose();
+    state.plane.material.dispose();
+    state.plane = null;
+  }
+
+  // Restore 3D volume visibility
+  if (state.volumeB) {
+    state.volumeB.material.opacity = 0.12;
+  }
+
+  // Stop GSAP projection animations
+  gsap.ticker.remove(renderAll);
+
+  // Reset point positions to centered data
+  state.centered.forEach((p, index) => {
+    if (groupB.children[index]) {
+      groupB.children[index].position.copy(p);
+    }
+  });
+
+  renderAll();
+}
+
     // =========================
     // GENERATE DATA 
     // =========================
     function generate() {
+      resetProjection();
       let n = parseInt(inputPoints.value);
       if (isNaN(n) || n < 10) n = 10;
       if (n > 2000) n = 2000;
@@ -291,6 +319,7 @@ export default {
     // CENTER DATA
     // =========================
     function center() {
+      resetProjection();
       const mean = new THREE.Vector3();
 
       state.raw.forEach(p => mean.add(p));
@@ -344,6 +373,7 @@ export default {
     // EIGENVECTORS 
     // =========================
     function eigen() {
+      resetProjection();
       const m = new Matrix(cov(state.centered));
       const eig = new EigenvalueDecomposition(m);
       
@@ -377,6 +407,7 @@ export default {
     // DRAW EIGENVECTORS 
     // =========================
     function drawEigen() {
+      
       const origin = new THREE.Vector3(0, 0, 0);
       const colors = [0xff3b30, 0x34c759, 0x007aff];
 
@@ -411,6 +442,7 @@ export default {
     // HIGHLIGHT PCS
     // =========================
     function pcs() {
+      resetProjection();
       state.labels.forEach(label => sceneB.remove(label));
       state.labels = [];
 
