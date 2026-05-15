@@ -1,7 +1,6 @@
 .pca-container {
   width: 100%;
-  max-width: 800px; /* Made slightly wider to accommodate side-by-side */
-  height: 500px;    /* Shorter, since they don't stack anymore */
+  height: 500px;    
   border: 1px solid #e1e4e8;
   border-radius: 10px;
   overflow: hidden;
@@ -49,7 +48,7 @@
   left: 12px;
   font-size: 12px;
   font-weight: 600;
-  color: #57606a;
+  color: #000000;
 }
 
 #chart1-wrapper::before { content: "2D Data"; }
