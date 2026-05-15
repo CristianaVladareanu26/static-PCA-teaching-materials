@@ -117,17 +117,17 @@ Each column of $\mathbf{W}$ is a Principal Component, and each Principal Compone
 
 Geometrically, this matrix multiplication effectively projects the original data points onto the newly established orthogonal axes.
 
+--- 
+*Use the widget below to generate a random dataset, center it, find its eigenvectors then highlight the first two PCs. Then project the original 3D dataset into its 2D equivalent.*
+*Experiment with different datasets to observe the full effect of the PCA algorithm.*
 
-
-Use the applet below to project the original 3D dataset onto its 2D equivalent. 
-Insert interactive visualization: a random 3D dataset with a 'generate random dataset button'. button one is available '1. center data' that centers the dataset.  button 2 is available '2. find eigenvectors' that draws the eigenvectors of the dataset. button 3 is available '3. find PCs' that selects 1/2 PCs with the most variance. button 4 is available '4. project data' that projects the datapoints onto the given principal components
-
-
-```{anywidget} assets/pca-widget.mjs
+```{anywidget} assets/pca-step4.mjs
 :css: assets/pca-widget-style.css
 {
   "step": 0
 }
 ```
+---
+
 
 Ready to see PCA in action? Go to the next section to see a worked-out example.
