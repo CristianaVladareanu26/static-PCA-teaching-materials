@@ -1,5 +1,6 @@
-# PCA Applied
+# PCA Applied  
 
+ 
 Let’s apply the PCA algorithm to a simple worked example.
 
 ## Problem statement
@@ -45,6 +46,7 @@ $$
 -0.5 & 1.5
 \end{bmatrix}
 $$
+
 
 ## Step 2: Calculating the Covariance Matrix
 The covariance matrix $\mathbf{C}$ for a sample is computed as:
