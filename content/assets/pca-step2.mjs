@@ -71,8 +71,16 @@ export default {
     controlsA.addEventListener('change', renderAll);
     controlsB.addEventListener('change', renderAll);
 
-    sceneA.add(new THREE.AxesHelper(3));
-    sceneB.add(new THREE.AxesHelper(3));
+    // Create Axes and force them to be gray
+    const axesA = new THREE.AxesHelper(3);
+    axesA.material.vertexColors = false; // Disable default RGB
+    axesA.material.color.setHex(0x888888); // Set to uniform gray
+    sceneA.add(axesA);
+
+    const axesB = new THREE.AxesHelper(3);
+    axesB.material.vertexColors = false; 
+    axesB.material.color.setHex(0x888888);
+    sceneB.add(axesB);
 
     // =========================
     // STATE
@@ -138,6 +146,33 @@ export default {
         m.position.copy(p);
         group.add(m);
       }
+    }
+
+    function createThickArrow(dir, origin, length, hexColor, thickness = 0.12) {
+      const group = new THREE.Group();
+      const mat = new THREE.MeshBasicMaterial({ color: hexColor, depthTest: false });
+
+      // Shaft
+      const cylinderLength = length - (thickness * 5);
+      const cylinderGeo = new THREE.CylinderGeometry(thickness, thickness, cylinderLength, 12);
+      const shaft = new THREE.Mesh(cylinderGeo, mat);
+      shaft.position.y = cylinderLength / 2;
+
+      // Head
+      const coneGeo = new THREE.ConeGeometry(thickness * 2.5, thickness * 5, 12);
+      const head = new THREE.Mesh(coneGeo, mat);
+      head.position.y = cylinderLength + (thickness * 2.5);
+
+      group.add(shaft);
+      group.add(head);
+
+      // Orient the arrow to point in the eigenvector direction
+      const axis = new THREE.Vector3(0, 1, 0); 
+      group.quaternion.setFromUnitVectors(axis, dir);
+      group.position.copy(origin);
+      group.renderOrder = 999; 
+
+      return group;
     }
 
     // =========================
@@ -277,18 +312,18 @@ export default {
     // =========================
     function drawEigen() {
       const origin = new THREE.Vector3(0, 0, 0);
+      
+      // PC1: Red, PC2: Green, PC3: Blue
       const colors = [0xff3b30, 0x34c759, 0x007aff];
 
-      // Remove any existing arrows before drawing new ones
+      // Clean up old arrows
       state.eigenArrows.forEach(arrow => sceneB.remove(arrow));
       state.eigenArrows = [];
 
       state.eigenvectors.forEach((v, i) => {
-        const arrow = new THREE.ArrowHelper(v, origin, 4, colors[i]);
-
-        arrow.line.material.depthTest = false;
-        arrow.cone.material.depthTest = false;
-        arrow.renderOrder = 999;
+        // Use the new thick arrow helper. 
+        // Length = 4, Thickness = 0.12
+        const arrow = createThickArrow(v, origin, 4, colors[i], 0.12);
 
         sceneB.add(arrow);
         state.eigenArrows.push(arrow);
