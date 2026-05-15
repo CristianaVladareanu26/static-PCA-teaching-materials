@@ -51,7 +51,9 @@ export default {
     view2.appendChild(canvas2);
 
     views.append(view1, view2);
-    container.append(controls, views);
+    
+    // CHANGED: Append views first, then controls to put them at the bottom
+    container.append(views, controls);
     el.appendChild(container);
 
     const ctx1 = canvas1.getContext('2d');
@@ -94,7 +96,8 @@ export default {
       canvas2.style.width = `${rect2.width}px`;
       canvas2.style.height = `${rect2.height}px`;
 
-      state.scale = rect1.width / 25; 
+      // Scale based on the width of a single chart
+      state.scale = rect1.width / 20; 
       renderFrame();
     }
     new ResizeObserver(resize).observe(views);
@@ -160,29 +163,9 @@ export default {
         const meanPix1 = toPix(canvas1, state.mean.x, state.mean.y);
         const meanPix2 = toPix(canvas2, state.mean.x, 0);
 
-        // Draw a dashed drop-line from the 2D mean down to the 1D chart
-        ctx1.strokeStyle = `rgba(255, 59, 48, ${state.animMean})`;
-        ctx1.lineWidth = 1.5;
-        ctx1.setLineDash([4, 4]);
-        ctx1.beginPath();
-        ctx1.moveTo(meanPix1.x, meanPix1.y);
-        ctx1.lineTo(meanPix1.x, h1); // Drop to bottom of canvas 1
-        ctx1.stroke();
-
-        ctx2.strokeStyle = `rgba(255, 59, 48, ${state.animMean})`;
-        ctx2.lineWidth = 1.5;
-        ctx2.setLineDash([4, 4]);
-        ctx2.beginPath();
-        ctx2.moveTo(meanPix2.x, 0); // Drop from top of canvas 2
-        ctx2.lineTo(meanPix2.x, h2/2);
-        ctx2.stroke();
-        ctx1.setLineDash([]);
-        ctx2.setLineDash([]);
-
         // Red Mean Dot in 2D
         ctx1.fillStyle = '#ff3b30';
         ctx1.beginPath();
-        // Scale dot size based on animation progress
         ctx1.arc(meanPix1.x, meanPix1.y, 7 * state.animMean, 0, Math.PI * 2);
         ctx1.fill();
         ctx1.strokeStyle = '#ffffff';
@@ -213,12 +196,10 @@ export default {
       inputPoints.value = n;
 
       state.raw = [];
-      // Create a random center for the cloud so the mean isn't always (0,0)
-      const centerX = (Math.random() - 0.5) * 10;
-      const centerY = (Math.random() - 0.5) * 10;
+      const centerX = (Math.random() - 0.5) * 8;
+      const centerY = (Math.random() - 0.5) * 8;
 
       for (let i = 0; i < n; i++) {
-        // Create a random cloud
         const spreadX = 2 + Math.random() * 2;
         const spreadY = 2 + Math.random() * 2;
         
@@ -242,7 +223,6 @@ export default {
       const n = state.raw.length;
       state.mean = { x: sumX / n, y: sumY / n };
 
-      // Animate the red dots appearing and dropping
       gsap.to(state, {
         animMean: 1, 
         duration: 0.8, 
