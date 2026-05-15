@@ -184,7 +184,7 @@ export default {
       const ctx = canvas.getContext('2d');
 
       ctx.fillStyle = colorStr;
-      ctx.font = 'bold 48px sans-serif';
+      ctx.font = 'bold 60px sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(text, 128, 64);
