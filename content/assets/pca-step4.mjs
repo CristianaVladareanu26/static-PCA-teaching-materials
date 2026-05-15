@@ -279,6 +279,11 @@ export default {
       draw(groupA, state.raw, matA);
       draw(groupB, state.raw, matB);
 
+      btnCenter.disabled = false;
+      btnEigen.disabled = false;
+      btnPCs.disabled = false;
+      btnProj.disabled = false;
+
       renderAll();
     }
 
@@ -300,6 +305,11 @@ export default {
       if (state.volumeB) sceneB.remove(state.volumeB);
       state.volumeB = createBoundingEllipsoid(state.centered, 0x6a8ba4);
       sceneB.add(state.volumeB);
+
+      btnCenter.disabled = false;
+      btnEigen.disabled = false;
+      btnPCs.disabled = false;
+      btnProj.disabled = false;
 
       renderAll();
     }
@@ -357,6 +367,7 @@ export default {
         eigenPairs[1].vector,
         eigenPairs[2].vector
       ];
+
       
       drawEigen();
 
@@ -388,6 +399,11 @@ export default {
 
       controlsA.update();
       controlsB.update();
+
+      btnCenter.disabled = false;
+      btnEigen.disabled = false;
+      btnPCs.disabled = false;
+      btnProj.disabled = false;
       renderAll();
     }
 
@@ -429,6 +445,11 @@ export default {
           });
         }
       });
+
+      btnCenter.disabled = false;
+      btnEigen.disabled = false;
+      btnPCs.disabled = false;
+      btnProj.disabled = false;
 
       gsap.ticker.add(renderAll);
       
@@ -520,6 +541,11 @@ export default {
           ease: "power2.inOut"
         });
       });
+
+      btnCenter.disabled = false;
+      btnEigen.disabled = false;
+      btnPCs.disabled = false;
+      btnProj.disabled = false;
     
       gsap.ticker.add(renderAll);
     }
