@@ -10,7 +10,18 @@ $$
 \mu = \frac{1}{n} \sum_{i=1}^{n} x_i
 $$
 
-Insert interactive widget generating random data and calculating the mean every time
+--- 
+*Use the widget below to generate a random dataset.*
+*Click button 1 to visualise the mean of the dataset in both 2D and 1D.*
+
+```{anywidget} assets/mean.mjs
+:css: assets/mean.css
+{
+  "step": 0
+}
+```
+
+---
 
 ```{admonition} Example: Calculating the mean
 :class: dropdown
@@ -35,7 +46,21 @@ $$
 
 A high variance means the data is widely spread, while a low variance means the data is tightly clustered around the mean.
 
-Insert interactive widget generating random data and visualizing the variance
+--- 
+*Use the widget below to generate a random dataset.*
+*Click button 1 to visualize the direction  of maximum variance: where the data spreads out the most.*
+*Click button 2 to see how each 2D point projects onto the line of maximum variance.*
+*Click button 3 to watch the data compress into a 1D number line.*
+*Experiment with different datasets to understand how calculating variance and projecting the data effectively reduces its dimensions while keeping as much of the original spread as possible.*
+
+```{anywidget} assets/variance.mjs
+:css: assets/variance.css
+{
+  "step": 0
+}
+```
+
+---
 
 ```{admonition} Example: Calculating variance
 :class: dropdown
