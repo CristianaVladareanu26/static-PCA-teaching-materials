@@ -31,18 +31,6 @@ $$ \mathbf{X}_{\text{centered}} = \mathbf{X} - \mu $$
 
 *Here, $\mathbf{X}$ is the dataset matrix and $\mu$ is the mean vector of the features.*
 
---- 
-*Use the widget below to generate a random dataset, then center it.*   
-*Experiment with different datasets to understand the effect of centering.*
-
-```{anywidget} assets/pca-step1.mjs
-:css: assets/pca-widget-style.css
-{
-  "step": 0
-}
-```
-
----
 
 ## Step 2: Calculating the Covariance Matrix
 Next, we calculate the {ref}`covariance <covariance>` matrix to capture how each pair of features in the data varies together. This allows us to see how features relate to each other - whether they increase or decrease together.
@@ -65,19 +53,6 @@ Eigenvectors indicate the directions of maximum variance in the data (the Princi
 ```
 
 
---- 
-*Use the widget below to generate a dataset, center it, then find its eigenvectors.*   
-*Observe how the first eigenvector points to the direction with the most variance in the data, and the second eigenvector points to the direction with the second most variance.*
-
-```{anywidget} assets/pca-step2.mjs
-:css: assets/pca-widget-style.css
-{
-  "step": 0
-}
-```
-
----
-
 
 ## Step 4: Finding Principal Components
 
@@ -94,19 +69,6 @@ So, the eigenvector with the highest eigenvalue will correspond to the first Pri
 A Principal Component is a new axis created from a linear combination of the original features. It is chosen to maximize the variance of the data projected onto it. 
 ```
 
---- 
-*Use the widget below to generate a random dataset, center it, and find its eigenvectors. Find the first two Principal Components of the dataset.*  
-*The first Principal Component (red PC1) describes the direction where the data is most spread out, i.e. has the maximum variance.*  
-*The second Principal Component (green PC2) describes the direction of the next highest variance in the data, and is orthogonal (perpendicular) to PC1.*  
-
-```{anywidget} assets/pca-step3.mjs
-:css: assets/pca-widget-style.css
-{
-  "step": 0
-}
-```
-
----
 
 ## Step 5: Project the Data
 Finally, we project the original data onto the dimensions represented by the selected Principal Components. This means we effectively reduce the number of features (dimensions) while keeping the most important patterns in the data!
@@ -118,18 +80,6 @@ $$ \mathbf{X}_{\text{pca}} = \mathbf{X}_{\text{centered}} \mathbf{W} $$
 
 Geometrically, this matrix multiplication effectively **projects the original data points onto the newly established orthogonal axes**.
 
---- 
-*Use the widget below to generate a random dataset, center it, find its eigenvectors, then highlight the first two PCs.*  
-*Project the original 3D dataset into its 2D equivalent. Observe how the data is projected from 3D (blue sphere in the left graph) to 2D (green plane in the right graph).*   
-*Experiment with different datasets to observe the full effect of the PCA algorithm.*   
-
-```{anywidget} assets/pca-step4.mjs
-:css: assets/pca-widget-style.css
-{
-  "step": 0
-}
-```
----
 
 
 Ready to see PCA in action? Go to the next section to see a worked-out example.
