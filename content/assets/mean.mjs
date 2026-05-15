@@ -122,7 +122,7 @@ export default {
       ctx2.clearRect(0, 0, w2, h2);
 
       // Draw Grid/Axes on Chart 1
-      ctx1.strokeStyle = '#ababab';
+      ctx1.strokeStyle = '#e1e4e8';
       ctx1.lineWidth = 2;
       ctx1.beginPath();
       ctx1.moveTo(0, h1/2); ctx1.lineTo(w1, h1/2); // X-axis
@@ -130,7 +130,7 @@ export default {
       ctx1.stroke();
 
       // Draw Grid/Axes on Chart 2 (X-axis only)
-      ctx2.strokeStyle = '#ababab';
+      ctx2.strokeStyle = '#e1e4e8';
       ctx2.lineWidth = 2;
       ctx2.beginPath();
       ctx2.moveTo(0, h2/2); ctx2.lineTo(w2, h2/2);
