@@ -78,20 +78,15 @@ export default {
     // STATE
     // =========================
     const state = {
-      raw: [],         // Original Vec2 points
+      raw: [],         
       mean: new Vec2(0, 0),
-      pc1: new Vec2(1, 0), // Principal Component vector
-      
-      // Animation progression states (0.0 to 1.0)
-      animVar: 0,      // Line drawing
-      animProjLine: 0, // Red lines drawing
-      animProject: 0,  // Data moving to 1D
-      
-      // Scaling factor (Math units to Pixels)
+      pc1: new Vec2(1, 0), 
+      animVar: 0,      
+      animProjLine: 0, 
+      animProject: 0,  
       scale: 15 
     };
 
-    // Math helper
     function randn() {
       let u = 0, v = 0;
       while (u === 0) u = Math.random();
@@ -105,7 +100,6 @@ export default {
     function resize() {
       const dpr = window.devicePixelRatio || 1;
       
-      // Setup Canvas 1
       const rect1 = view1.getBoundingClientRect();
       canvas1.width = rect1.width * dpr;
       canvas1.height = rect1.height * dpr;
@@ -113,7 +107,6 @@ export default {
       canvas1.style.width = `${rect1.width}px`;
       canvas1.style.height = `${rect1.height}px`;
 
-      // Setup Canvas 2
       const rect2 = view2.getBoundingClientRect();
       canvas2.width = rect2.width * dpr;
       canvas2.height = rect2.height * dpr;
@@ -121,23 +114,21 @@ export default {
       canvas2.style.width = `${rect2.width}px`;
       canvas2.style.height = `${rect2.height}px`;
 
-      state.scale = rect1.width / 25; // Define math coordinate grid size
+      state.scale = rect1.width / 25; 
       renderFrame();
     }
     new ResizeObserver(resize).observe(views);
 
-    // Transforms Math coords (x, y) to Canvas coords
     function toPix(canvas, v) {
       const w = parseFloat(canvas.style.width);
       const h = parseFloat(canvas.style.height);
       return {
         x: (w / 2) + (v.x * state.scale),
-        y: (h / 2) - (v.y * state.scale) // Y flips (canvas Y goes down)
+        y: (h / 2) - (v.y * state.scale) 
       };
     }
 
     function renderFrame() {
-      // Clear Canvases
       const w1 = parseFloat(canvas1.style.width);
       const h1 = parseFloat(canvas1.style.height);
       const w2 = parseFloat(canvas2.style.width);
@@ -154,7 +145,7 @@ export default {
       ctx1.moveTo(w1/2, 0); ctx1.lineTo(w1/2, h1);
       ctx1.stroke();
 
-      // Draw Grid/Axes on Chart 2 (just horizontal)
+      // Draw Grid/Axes on Chart 2
       ctx2.strokeStyle = '#e1e4e8';
       ctx2.lineWidth = 2;
       ctx2.beginPath();
@@ -165,10 +156,9 @@ export default {
 
       const pMean = toPix(canvas1, state.mean);
 
-      // 1. Draw Max Variance Direction (PC1)
+      // LAYER 1: Max Variance Direction (PC1)
       if (state.animVar > 0) {
-        // Line length spans the screen
-        const lineLen = 20 * state.animVar; 
+        const lineLen = 25 * state.animVar; 
         const pStart = toPix(canvas1, state.mean.add(state.pc1.mult(-lineLen)));
         const pEnd = toPix(canvas1, state.mean.add(state.pc1.mult(lineLen)));
 
@@ -180,7 +170,16 @@ export default {
         ctx1.stroke();
       }
 
-      // 2. Draw Projections & Points
+      // LAYER 2: Original 2D Points (drawn first so lines can go over them)
+      state.raw.forEach(p => {
+        const pPix = toPix(canvas1, p);
+        ctx1.fillStyle = '#6a8ba4';
+        ctx1.beginPath();
+        ctx1.arc(pPix.x, pPix.y, 4, 0, Math.PI * 2);
+        ctx1.fill();
+      });
+
+      // LAYER 3: Red Projection Lines & 1D Points
       state.raw.forEach(p => {
         const pPix = toPix(canvas1, p);
         
@@ -190,50 +189,40 @@ export default {
         const projMath = state.mean.add(state.pc1.mult(distOnLine));
         const projPix = toPix(canvas1, projMath);
 
-        // Draw Red Projection Line
+        // Draw Red Projection Line OVER the points
         if (state.animProjLine > 0) {
-          // Interpolate the line drawing
           const curX = pPix.x + (projPix.x - pPix.x) * state.animProjLine;
           const curY = pPix.y + (projPix.y - pPix.y) * state.animProjLine;
 
           ctx1.strokeStyle = '#ff3b30';
           ctx1.lineWidth = 1.5;
-          ctx1.setLineDash([4, 4]); // Dashed line
+          ctx1.setLineDash([4, 4]);
           ctx1.beginPath();
           ctx1.moveTo(pPix.x, pPix.y);
           ctx1.lineTo(curX, curY);
           ctx1.stroke();
-          ctx1.setLineDash([]); // Reset
+          ctx1.setLineDash([]); 
         }
-
-        // Draw Original 2D Point
-        ctx1.fillStyle = '#6a8ba4';
-        ctx1.beginPath();
-        ctx1.arc(pPix.x, pPix.y, 4, 0, Math.PI * 2);
-        ctx1.fill();
 
         // Draw 1D Projected Point on Chart 2
         if (state.animProject > 0) {
-          // Calculate destination pixel on Chart 2
           const targetX = (w2 / 2) + (distOnLine * state.scale);
           const targetY = h2 / 2;
-
-          // Start position visually drops from Chart 1
           const startX = projPix.x;
-          // Calculate an offset so it feels like it drops from the top
           const startY = 0; 
 
           const animX = startX + (targetX - startX) * state.animProject;
           const animY = startY + (targetY - startY) * state.animProject;
 
-          ctx2.fillStyle = '#34c759'; // Green for final data
+          // Matched color to 2D dots
+          ctx2.fillStyle = '#6a8ba4'; 
           ctx2.beginPath();
           ctx2.arc(animX, animY, 5, 0, Math.PI * 2);
           ctx2.fill();
         }
       });
 
-      // Draw Mean Point
+      // LAYER 4: Draw Mean Point on top of everything
       if (state.animVar > 0) {
         ctx1.fillStyle = '#000000';
         ctx1.beginPath();
@@ -257,14 +246,13 @@ export default {
       inputPoints.value = n;
 
       state.raw = [];
-      const center = new Vec2((Math.random()-0.5)*4, (Math.random()-0.5)*4);
+      const center = new Vec2((Math.random()-0.5)*2, (Math.random()-0.5)*2);
 
       for (let i = 0; i < n; i++) {
-        // Create an explicitly correlated dataset (diagonal spread)
-        const spread = randn() * 3;
-        const noise = randn() * 0.8;
+        // Increased spread and noise to separate the data more
+        const spread = randn() * 5.0; 
+        const noise = randn() * 1.8; 
         
-        // Rotate the data randomly so PC1 isn't always purely diagonal
         const angle = Math.PI / 6; 
         const x = spread * Math.cos(angle) - noise * Math.sin(angle);
         const y = spread * Math.sin(angle) + noise * Math.cos(angle);
@@ -280,13 +268,11 @@ export default {
     }
 
     function findVariance() {
-      // 1. Calculate Mean
       let sumX = 0, sumY = 0;
       state.raw.forEach(p => { sumX += p.x; sumY += p.y; });
       const n = state.raw.length;
       state.mean = new Vec2(sumX / n, sumY / n);
 
-      // 2. Calculate Covariance Matrix
       let cxx = 0, cxy = 0, cyy = 0;
       state.raw.forEach(p => {
         const dx = p.x - state.mean.x;
@@ -297,20 +283,16 @@ export default {
       });
       cxx /= (n - 1); cxy /= (n - 1); cyy /= (n - 1);
 
-      // 3. Eigen Decomp
       const covMat = new Matrix([[cxx, cxy], [cxy, cyy]]);
       const eig = new EigenvalueDecomposition(covMat);
       const v = eig.eigenvectorMatrix.to2DArray();
       const d = eig.realEigenvalues;
 
-      // Extract column vectors
       const vec0 = new Vec2(v[0][0], v[1][0]).norm();
       const vec1 = new Vec2(v[0][1], v[1][1]).norm();
 
-      // PC1 is the vector with the highest eigenvalue
       state.pc1 = d[0] > d[1] ? vec0 : vec1;
 
-      // Animate line
       gsap.to(state, {
         animVar: 1, duration: 1, ease: "power2.out",
         onUpdate: renderFrame
