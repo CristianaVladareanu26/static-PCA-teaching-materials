@@ -6,7 +6,6 @@ project:
   keywords: [Principal Component Analysis, PCA, Machine Learning, ML, Education, Multimodal, Modalities, Teaching, Learning, Computer Science, CS]
 
   github: https://cristianavladareanu26.github.io/multimodal-PCA-teaching-materials/
-  date: 2026-05-04
   thumbnail: style/thumbnail.jpg
   numbering: 
     title: true
@@ -34,7 +33,6 @@ project:
 
   plugins:
     - https://github.com/jupyter-book/myst-plugins/releases/download/iframe-to-qr-pdf/iframe-to-qr-pdf.mjs\
-    - plugins/page-last-updated.mjs
     - plugins/typst_conversion-support.mjs
     - plugins/lightbox.mjs
     
