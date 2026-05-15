@@ -8,6 +8,6 @@ Linear algebra is the language for representing and transforming data in Machine
 
 ## Statistics
 
-Statistics provides the tools to describe and understand data. Since PCA is based on identifying patterns in how data varies, we need basic statistical concepts to measure and interpret this variation.
+Statistical methods allow us to describe and understand data. Since PCA is based on identifying patterns in how data varies, we need basic statistical concepts to measure and interpret this variation.
 
 We begin this mathematical review section by revisiting the key concepts from linear algebra.
